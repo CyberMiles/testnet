@@ -1,0 +1,60 @@
+version: '2'
+services:
+    validators:
+        image: ywonline/travis:latest
+        depends_on:
+            - node-1
+            - node-2
+            - node-3
+            - node-4
+    normal:
+        image: ywonline/travis:latest
+        depends_on:
+            - node-5
+            - node-6
+    all:
+        image: ywonline/travis:latest
+        depends_on:
+            - validators
+            - normal
+
+    node-1:
+        image: ywonline/travis:latest
+        container_name: node-1
+        volumes:
+            - ~/volumes/testnet/travis/nodes/node1:/travis
+        command: ["node", "start", "--home=/travis"]
+        ports:
+            - 8545:8545
+            - 46656:46656
+            - 46657:46657
+    node-2:
+        image: ywonline/travis:latest
+        container_name: node-2
+        volumes:
+            - ~/volumes/testnet/travis/nodes/node2:/travis
+        command: ["node", "start", "--home=/travis"]
+    node-3:
+        image: ywonline/travis:latest
+        container_name: node-3
+        volumes:
+            - ~/volumes/testnet/travis/nodes/node3:/travis
+        command: ["node", "start", "--home=/travis"]
+    node-4:
+        image: ywonline/travis:latest
+        container_name: node-4
+        volumes:
+            - ~/volumes/testnet/travis/nodes/node4:/travis
+        command: ["node", "start", "--home=/travis"]
+    node-5:
+        image: ywonline/travis:latest
+        container_name: node-5
+        volumes:
+            - ~/volumes/testnet/travis/nodes/node5:/travis
+        command: ["node", "start", "--home=/travis"]
+    node-6:
+        image: ywonline/travis:latest
+        container_name: node-6
+        volumes:
+            - ~/volumes/testnet/travis/nodes/node6:/travis
+        command: ["node", "start", "--home=/travis"]

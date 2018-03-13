@@ -1,0 +1,39 @@
+{
+  "genesis_time": "2018-03-15T00:00:00Z",
+  "chain_id": "travis-1-dev",
+  "validators": [
+    {
+      "pub_key": {
+        "type": "ed25519",
+        "data": "7825A11CF12DA056778C5DFC31231FBCEB1B637A336A90F023F1F53E3D798B03"
+      },
+      "power": 1000,
+      "name": ""
+    },
+    {
+      "pub_key": {
+        "type": "ed25519",
+        "data": "23BA64E0F347F12C60657CCB2DB07E72422017021E5810A7664F815E02CDB583"
+      },
+      "power": 1000,
+      "name": ""
+    },
+    {
+      "pub_key": {
+        "type": "ed25519",
+        "data": "B386C9DC21BEBF0C4F68E310D4675379176C9F8119383F9395C72E7AF026D1DA"
+      },
+      "power": 1000,
+      "name": ""
+    },
+    {
+      "pub_key": {
+        "type": "ed25519",
+        "data": "D8C06D6328BBA37C68DA2199B151A531658C36CA1C237BB8B392D33B770B8B10"
+      },
+      "power": 1000,
+      "name": ""
+    }
+  ],
+  "app_hash": ""
+}

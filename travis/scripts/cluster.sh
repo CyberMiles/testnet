@@ -70,5 +70,7 @@ sed -i '' "s/\"validators\":\[.*\]/\"validators\":\[$validators\]/" node1/genesi
 jq '(.genesis_time) |= "2018-03-15T00:00:00Z" | (.chain_id) |= "travis-1-dev" | (.validators[]|.power) |= 1000' \
   node1/genesis.json > tmp && mv tmp node1/genesis.json
 
-# copy from node1 to other nodes
+# copy genesis.json from node1 to other nodes
 for ((i=2;i<=$INST_COUNT;i++)) do echo node$i/genesis.json; done | xargs -n 1 cp node1/genesis.json
+# format priv_validator.json
+for ((i=1;i<=$INST_COUNT;i++)) do jq . node$i/priv_validator.json > tmp && mv tmp node$i/priv_validator.json; done

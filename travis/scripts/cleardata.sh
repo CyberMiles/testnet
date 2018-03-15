@@ -37,8 +37,10 @@ remove_a_node() {
   node=$1
   echo "clear data for $node..."
   cd $BASE_DIR
-  # remove data folder
-  rm -rf $dir/vm $node/data
+  # remove local db
+  rm -rf $node/vm $node/data
+  # copy genesis vm
+  cp -r ../scripts/vm $node/
   # set last_height, last_round, last_step=0, last_signature=null, remove last_signbytes
   jq '(.last_height) |= 0 | (.last_round) |= 0 | (.last_step) |= 0 | (.last_signature) |= null | del(.last_signbytes)' \
     $node/priv_validator.json > tmp && mv tmp $node/priv_validator.json

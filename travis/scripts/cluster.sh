@@ -1,11 +1,13 @@
 #!/bin/bash
 if [ "$1" == "-h" ]; then
-  echo "Usage: `basename $0` [inst_count] [validator_count]"
+  echo "Usage: `basename $0` chain_id [inst_count] [validator_count]"
   exit
 fi
 
-INST_COUNT=$1
-VALIDATOR_COUNT=$2
+CHAIN_ID=$1
+CHAIN_DATE=`date '+%Y-%m-%dT%H:%M:%SZ'`
+INST_COUNT=$2
+VALIDATOR_COUNT=$3
 
 cd "$(dirname "$0")"
 BASE_DIR=$(dirname $PWD)/nodes
@@ -15,6 +17,11 @@ TP2PPORT=46656
 ERPCPORT=8545
 
 # init params
+if [ -z "$CHAIN_ID" ]
+  then
+    echo "No chain_id supplied. "
+    exit 1
+fi
 if [[ (-z $INST_COUNT) || (! $INST_COUNT =~ ^[0-9]+$) ]]; then
   INST_COUNT=1
   VALIDATOR_COUNT=1
@@ -34,7 +41,7 @@ if [ $INST_COUNT -eq 0 ]; then
   exit
 fi
 
-echo "inst_count: $INST_COUNT, validator_count: $VALIDATOR_COUNT"
+echo "chain_id: $CHAIN_ID, inst_count: $INST_COUNT, validator_count: $VALIDATOR_COUNT"
 read -p "Press enter to continue..."
 
 # init & config.toml
@@ -67,7 +74,8 @@ validators=`for ((i=1;i<=$VALIDATOR_COUNT;i++)) do echo node$i/genesis.json; don
   | xargs jq -r '.validators[0]' | sed '$!s/^}$/},/' |tr -d '\n'`
 sed -i '' "s/\"validators\":\[.*\]/\"validators\":\[$validators\]/" node1/genesis.json
 # set genesis_time, chain_id and validator.power
-jq '(.genesis_time) |= "2018-03-15T00:00:00Z" | (.chain_id) |= "travis-1-dev" | (.validators[]|.power) |= 1000' \
+jq --arg CHAIN_DATE $CHAIN_DATE --arg CHAIN_ID $CHAIN_ID \
+  '(.genesis_time) |= $CHAIN_DATE | (.chain_id) |= $CHAIN_ID | (.validators[]|.power) |= 1000' \
   node1/genesis.json > tmp && mv tmp node1/genesis.json
 
 # copy genesis.json from node1 to other nodes

@@ -58,3 +58,11 @@ services:
         volumes:
             - ~/volumes/testnet/travis/nodes/node6:/travis
         command: ["node", "start", "--home=/travis"]
+    smoke-test:
+        image: ywonline/web3-cmt:latest
+        container_name: client
+        depends_on:
+            - node-1
+            - node-2
+            - node-3
+            - node-4

@@ -1,4 +1,3 @@
-vm/
 data/
 addrbook.json
-nodes/**/[0-9]*
+nodes/*/vm

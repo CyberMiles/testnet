@@ -1,11 +1,11 @@
 {
-  "genesis_time": "2018-03-15T00:00:00Z",
-  "chain_id": "travis-1-dev",
+  "genesis_time": "2018-03-15T12:16:18Z",
+  "chain_id": "test",
   "validators": [
     {
       "pub_key": {
         "type": "ed25519",
-        "data": "7825A11CF12DA056778C5DFC31231FBCEB1B637A336A90F023F1F53E3D798B03"
+        "data": "9BC75DDE216EEC7B80E9A2636A6E1A5E24B0F36BA130D4C8AB730455449F2BCB"
       },
       "power": 1000,
       "name": ""
@@ -13,7 +13,7 @@
     {
       "pub_key": {
         "type": "ed25519",
-        "data": "23BA64E0F347F12C60657CCB2DB07E72422017021E5810A7664F815E02CDB583"
+        "data": "42E01EC8B9497925AC168EA07B1D45A65518E69B905E93F063F6EA0B0019A6C1"
       },
       "power": 1000,
       "name": ""
@@ -21,7 +21,7 @@
     {
       "pub_key": {
         "type": "ed25519",
-        "data": "B386C9DC21BEBF0C4F68E310D4675379176C9F8119383F9395C72E7AF026D1DA"
+        "data": "F5064D1698D86917A24C3E98FE19ABCC2DD99088135D1BFC8CEF2CD4B1B173E0"
       },
       "power": 1000,
       "name": ""
@@ -29,7 +29,7 @@
     {
       "pub_key": {
         "type": "ed25519",
-        "data": "D8C06D6328BBA37C68DA2199B151A531658C36CA1C237BB8B392D33B770B8B10"
+        "data": "F13AF2F06100E11050EC3855ED9BDF81C8930FAAC2582BE58615940334279B16"
       },
       "power": 1000,
       "name": ""

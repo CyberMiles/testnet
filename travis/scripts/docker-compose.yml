@@ -34,30 +34,40 @@ services:
         volumes:
             - ~/volumes/testnet/travis/nodes/node2:/travis
         command: ["node", "start", "--home=/travis"]
+        depends_on:
+            - node-1
     node-3:
         image: ywonline/travis:latest
         container_name: node-3
         volumes:
             - ~/volumes/testnet/travis/nodes/node3:/travis
         command: ["node", "start", "--home=/travis"]
+        depends_on:
+            - node-1
     node-4:
         image: ywonline/travis:latest
         container_name: node-4
         volumes:
             - ~/volumes/testnet/travis/nodes/node4:/travis
         command: ["node", "start", "--home=/travis"]
+        depends_on:
+            - node-1
     node-5:
         image: ywonline/travis:latest
         container_name: node-5
         volumes:
             - ~/volumes/testnet/travis/nodes/node5:/travis
         command: ["node", "start", "--home=/travis"]
+        depends_on:
+            - node-1
     node-6:
         image: ywonline/travis:latest
         container_name: node-6
         volumes:
             - ~/volumes/testnet/travis/nodes/node6:/travis
         command: ["node", "start", "--home=/travis"]
+        depends_on:
+            - node-1
     smoke-test:
         image: ywonline/web3-cmt:latest
         container_name: client

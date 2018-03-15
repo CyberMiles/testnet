@@ -55,15 +55,17 @@ do
   cd $dir
 
   rm -rf *
-  travis node init --home .
+  # travis node init --home .
+  docker run --rm -v $dir:/travis ywonline/travis:latest node init --home=/travis
+
   if [ $i -ne 1 ]; then
     seeds=`for ((i=1;i<=$VALIDATOR_COUNT;i++)) do echo node-$i:$TP2PPORT; done | sed '$!s/$/,/' | tr -d '\n'`
   else
     # seeds is empty string for the first instance
     seeds=""
   fi
-  sed -i '' "s/seeds = \"\"/seeds = \"$seeds\"/g" ./config.toml
-  sed -i '' "s/moniker = .*$/moniker = \"node-$i\"/g" ./config.toml
+  sed -i.bak "s/seeds = \"\"/seeds = \"$seeds\"/g" ./config.toml
+  sed -i.bak "s/moniker = .*$/moniker = \"node-$i\"/g" ./config.toml
 done
 
 # genesis.json
@@ -72,7 +74,7 @@ cd $BASE_DIR
 # combine the public keys of all validators, and set to genesis.json
 validators=`for ((i=1;i<=$VALIDATOR_COUNT;i++)) do echo node$i/genesis.json; done \
   | xargs jq -r '.validators[0]' | sed '$!s/^}$/},/' |tr -d '\n'`
-sed -i '' "s/\"validators\":\[.*\]/\"validators\":\[$validators\]/" node1/genesis.json
+sed -i.bak "s/\"validators\":\[.*\]/\"validators\":\[$validators\]/" node1/genesis.json
 # set genesis_time, chain_id and validator.power
 jq --arg CHAIN_DATE $CHAIN_DATE --arg CHAIN_ID $CHAIN_ID \
   '(.genesis_time) |= $CHAIN_DATE | (.chain_id) |= $CHAIN_ID | (.validators[]|.power) |= 1000' \

@@ -34,7 +34,7 @@ mkdir -p ~/volumes
 git clone https://github.com/CyberMiles/testnet.git ~/volumes/testnet
 ```
 
-Or run `scripts/cluster.sh [count_of_all_nodes] [count_of_validators]` to setup a cluster differently.
+Or run `scripts/cluster.sh chain_id [count_of_all_nodes] [count_of_validators]` to setup a cluster differently.
 
 ### Start up
 

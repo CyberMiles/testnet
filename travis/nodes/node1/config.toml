@@ -12,7 +12,7 @@ laddr = "tcp://0.0.0.0:46657"
 
 [p2p]
 laddr = "tcp://0.0.0.0:46656"
-seeds = ""
+seeds = "node-1:46656,node-2:46656,node-3:46656,node-4:46656"
 
 [vm]
 rpc = true

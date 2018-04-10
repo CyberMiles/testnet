@@ -1,0 +1,63 @@
+{
+  "genesis_time": "2018-04-09T10:08:08Z",
+  "chain_id": "travis-1-test",
+  "validators": [
+    {
+      "pub_key": {
+        "type": "ed25519",
+        "data": "D7F84CD88D6E7CCE409F702346940C2BA308C6494753B62258A07210DFBBCFC8"
+      },
+      "power": 1000,
+      "name": ""
+    },
+    {
+      "pub_key": {
+        "type": "ed25519",
+        "data": "453B8E70D5A8168A4DA71EC078F10A536B99E7B7FCB7CD9C8A3DFE0B703AEBC1"
+      },
+      "power": 1000,
+      "name": ""
+    },
+    {
+      "pub_key": {
+        "type": "ed25519",
+        "data": "1FE56A29C636413DDAB66887A41256E7AC2FCF87FB274BEACE4AC44AB5388D92"
+      },
+      "power": 1000,
+      "name": ""
+    },
+    {
+      "pub_key": {
+        "type": "ed25519",
+        "data": "8761ADE93E43F74E68F0D5B9DA8A55D918AC4F38CE8B881497CD020779FBE882"
+      },
+      "power": 1000,
+      "name": ""
+    },
+    {
+      "pub_key": {
+        "type": "ed25519",
+        "data": "466D1EBFF98D79D5C877ADAFBB68A92D78DFDD4F8C0892D5D2FE60FFF9C0F67B"
+      },
+      "power": 1000,
+      "name": ""
+    },
+    {
+      "pub_key": {
+        "type": "ed25519",
+        "data": "9A9F85485764A90D9B9ADE7DCB53E697C09B11D77AF3F0E6DCD000F2FEED3FBC"
+      },
+      "power": 1000,
+      "name": ""
+    },
+    {
+      "pub_key": {
+        "type": "ed25519",
+        "data": "0B44A1A9041C462E7CA765F96261C756AED9D9C6C0E7FB7E0BDDFC32897B7537"
+      },
+      "power": 1000,
+      "name": ""
+    }
+  ],
+  "app_hash": ""
+}

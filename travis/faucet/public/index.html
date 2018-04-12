@@ -44,12 +44,16 @@ $(document).ready(function(){
     <div class="box" id="status-box">
       <p class="lead text-center">Blockchain Status: <span id="status">Fetching data ...</span></p>
     </div>
+    
+    <h2>Get started</h2>
+    <p>To get Travis TestNet CMT (the native token) and TEST (a test contract token based on CMT) tokens, you will need to first create accounts on the blockchain. There are two ways to do this. You can start your own Travis node, or apply access to one of our nodes.</p>
 
-    <h2>Prerequisites</h2>
-
-    <p>You need to have <a href="https://golang.org/doc/install">GO</a>, <a href="https://gcc.gnu.org/install/">GCC</a>, and <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a> installed on your machine.</p>
-
-    <p>You should now have <code>$GOROOT</code> and <code>$GOPATH</code> setup.</p>
+    <ul>
+      <li><a href="https://medium.com/cybermiles/running-a-travis-node-ac7447b754d4">Start your own Travis node</a> (recommended)</li>
+      <li><a href="https://medium.com/cybermiles/travis-testnet-testing-guide-c7687b6f4f82">Access one of our nodes</a></li>
+    </ul>
+    
+    <a href="https://medium.com/cybermiles/introducing-travis-the-cybermiles-testnet-2f9a981e560">Learn more about CyberMiles Travis TestNet</a>
 
     <h2>Get some tokens</h2>
     <p>Please use the form below to send some tokens to your newly created wallet.</p>
@@ -64,6 +68,12 @@ $(document).ready(function(){
         <button type="submit">Send me 1000 CMT and 1000 TEST </button>
       </div>
     </form>
+    
+    <h2>Run some stress tests</h2>
+    <p>Now you have tokens in your account. You can download our <a href="enduser.zip">benchmark tester here</a>. Edit the <code>config/default.json</code> file to enter your node (provider), and from / to account information.</p>
+    
+    <p>Run <code>node sendTx.js</code> and <code>node sendTokenTx.js</code> commands to run the tests. <a href="https://medium.com/cybermiles/travis-testnet-testing-guide-c7687b6f4f82">Read more here (scroll down to the "Stress testing" section)</a></p>
+    
   </div>
 
   <div class="footer">

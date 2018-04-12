@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="style.css">
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
 $(document).ready(function(){
@@ -58,8 +59,8 @@ $(document).ready(function(){
       <div class="form-group">
         <label for="to">Account</label>
         <input type="text" class="form-control" name="to" id="to" placeholder="0x">
-        <p class="help-block"></p>
       </div>
+      <div class="g-recaptcha" data-sitekey="6Le6wFIUAAAAAPMm9nXPFR9h6gL8HRD21GpQaJxT"></div>
       <div class="control-group" style="margin-top:10px;">
         <button type="submit">Send me 1000 CMT and 1000 TEST </button>
       </div>
@@ -76,7 +77,12 @@ $('form').submit(function () {
   $('#to').siblings('.help-block').remove()
   addReg.lastIndex = 0
   if (!addReg.test($('#to').val())) {
-    $('<div class="help-block error"></div>').insertAfter('#to').text('Please enter a valid address')
+    $('<p class="help-block error"></p>').insertAfter('#to').text('Please enter a valid address')
+    return false
+  }
+  var recaptcha = grecaptcha.getResponse()
+  if (!recaptcha) {
+    $('<p class="help-block error"></p>').insertAfter('#to').text('Please verify the recaptcha')
     return false
   }
   $(this).find('input, button').prop('disabled', true)
@@ -85,15 +91,19 @@ $('form').submit(function () {
     type: 'post',
     dataType: 'json',
     contentType:"application/json; charset=utf-8",
-    data: JSON.stringify({to: $('#to').val()}),
+    data: JSON.stringify({to: $('#to').val(), recaptcha: recaptcha}),
     error: () => {
-      $('<div class="help-block error"></div>').insertAfter('#to').text('Error occured')
+      $('<p class="help-block error"></p>').insertAfter('#to').text('Error occured')
     },
     success: (data) => {
       if (data.error) {
-        $('<div class="help-block error"></div>').insertAfter('#to').text('Failed')
-      } else if (data.hash) {
-        $('<div class="help-block success"></div>').insertAfter('#to').text('Success with transaction hash: ' + data.hash)
+        var failed = 'Failed'
+        if (typeof data.error == 'string') {
+          failed = data.error
+        }
+        $('<p class="help-block error"></p>').insertAfter('#to').text(failed)
+      } else if (data.cmtHash) {
+        $('<p class="help-block success"></p>').insertAfter('#to').html('Success with transaction hash<br/>CMT - ' + data.cmtHash + '<br/>TEST - ' + data.testHash)
       }
     },
     complete: () => {

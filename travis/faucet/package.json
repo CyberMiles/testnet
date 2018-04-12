@@ -1,0 +1,14 @@
+{
+  "name": "travis-faucet",
+  "version": "1.0.0",
+  "description": "travis faucet",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wangshishuo",
+  "dependencies": {
+    "express": "^4.16.3",
+    "web3": "^0.20.6"
+  }
+}

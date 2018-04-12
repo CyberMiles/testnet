@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CyberMiles Travis TestNet Faucet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+$(document).ready(function(){
+  $.ajax({
+    url: "http://travis-node.cybermiles.io:46657/status",
+    dataType: 'json',
+    error: function(){
+      $('#status-box').css('background', 'rgba(216, 0, 0, 0.1)');
+      $('#status').css('color', 'rgb(193, 0, 8)');
+      $('#status').html("Down (please check back later)");
+    },
+    success: function(json_x){
+      if (json_x.error) {
+        $('#status-box').css('background', 'rgba(216, 0, 0, 0.1)');
+        $('#status').css('color', 'rgb(193, 0, 8)');
+        $('#status').html("Error: " + json_x.error);
+      } else {
+        $('#status-box').css('background', 'rgba(30, 186, 0, 0.1)');
+        $('#status').css('color', 'rgb(19, 122, 0)');
+        $('#status').html("Last block: " + json_x.result.latest_block_height);
+      }
+    },
+    timeout: 5000
+  });
+});
+    </script>
+  </head>
+  <body>
+  <nav>
+    <a href="https://www.cybermiles.io">
+      <img class="logo" src="https://www.cybermiles.io/wp-content/themes/cybermiles/dist/images/logo.png" alt="CyberMiles logo" />
+    </a>
+  </nav>
+  <div class="container">
+    <h1>CyberMiles Travis TestNet Faucet</h1>
+    <div class="box" id="status-box">
+      <p class="lead text-center">Blockchain Status: <span id="status">Fetching data ...</span></p>
+    </div>
+
+    <h2>Prerequisites</h2>
+
+    <p>You need to have <a href="https://golang.org/doc/install">GO</a>, <a href="https://gcc.gnu.org/install/">GCC</a>, and <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a> installed on your machine.</p>
+
+    <p>You should now have <code>$GOROOT</code> and <code>$GOPATH</code> setup.</p>
+
+    <h2>Get some tokens</h2>
+    <p>Please use the form below to send some tokens to your newly created wallet.</p>
+
+    <form method=POST>
+      <div class="form-group">
+        <label for="to">Account</label>
+        <input type="text" class="form-control" name="to" id="to" placeholder="0x">
+        <p class="help-block"></p>
+      </div>
+      <div class="control-group" style="margin-top:10px;">
+        <button type="submit">Send me 1000 CMT and 1000 TEST </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="footer">
+    <p class="lead text-center">Happy validating!</p>
+  </div>
+
+  <script>
+var addReg = /^0[xX][0-9a-zA-Z]{40}/g
+$('form').submit(function () {
+  $('#to').siblings('.help-block').remove()
+  addReg.lastIndex = 0
+  if (!addReg.test($('#to').val())) {
+    $('<div class="help-block error"></div>').insertAfter('#to').text('Please enter a valid address')
+    return false
+  }
+  $(this).find('input, button').prop('disabled', true)
+  $.ajax({
+    url: '/send',
+    type: 'post',
+    dataType: 'json',
+    contentType:"application/json; charset=utf-8",
+    data: JSON.stringify({to: $('#to').val()}),
+    error: () => {
+      $('<div class="help-block error"></div>').insertAfter('#to').text('Error occured')
+    },
+    success: (data) => {
+      if (data.error) {
+        $('<div class="help-block error"></div>').insertAfter('#to').text('Failed')
+      } else if (data.hash) {
+        $('<div class="help-block success"></div>').insertAfter('#to').text('Success with transaction hash: ' + data.hash)
+      }
+    },
+    complete: () => {
+      $(this).find('input, button').prop('disabled', false)
+    }
+  })
+  return false
+})
+  </script>
+
+  </body>
+</html>

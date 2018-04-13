@@ -7,8 +7,13 @@
     <link rel="stylesheet" href="style.css">
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
+if (typeof jQuery == 'undefined') {
+  setTimeout(function() {
+    alert('The page is not loaded properly, please refresh and try again.')
+  }, 1000)
+}
 $(document).ready(function(){
   $.ajax({
     url: "http://travis-node.cybermiles.io:46657/status",
@@ -66,7 +71,7 @@ $(document).ready(function(){
       </div>
       <div class="g-recaptcha" data-sitekey="6Le6wFIUAAAAAPMm9nXPFR9h6gL8HRD21GpQaJxT"></div>
       <div class="control-group" style="margin-top:10px;">
-        <button type="submit">Send me 1000 CMT and 1000 TEST </button>
+        <button type="button">Send me 1000 CMT and 1000 TEST </button>
       </div>
     </form>
     
@@ -81,45 +86,49 @@ $(document).ready(function(){
 
   <script>
 var addReg = /^0[xX][0-9a-zA-Z]{40}/g
-$('form').submit(function () {
-  $('#to').siblings('.help-block').remove()
-  addReg.lastIndex = 0
-  if (!addReg.test($('#to').val())) {
-    $('<p class="help-block error"></p>').insertAfter('#to').text('Please enter a valid address')
-    return false
-  }
-  var recaptcha = grecaptcha.getResponse()
-  if (!recaptcha) {
-    $('<p class="help-block error"></p>').insertAfter('#to').text('Please verify the recaptcha')
-    return false
-  }
-  $(this).find('input, button').prop('disabled', true)
-  $.ajax({
-    url: '/send',
-    type: 'post',
-    dataType: 'json',
-    contentType:"application/json; charset=utf-8",
-    data: JSON.stringify({to: $('#to').val(), recaptcha: recaptcha}),
-    error: () => {
-      $('<p class="help-block error"></p>').insertAfter('#to').text('Error occured')
-    },
-    success: (data) => {
-      if (data.error) {
-        var failed = 'Failed'
-        if (typeof data.error == 'string') {
-          failed = data.error
-        }
-        $('<p class="help-block error"></p>').insertAfter('#to').text(failed)
-      } else if (data.cmtHash) {
-        $('<p class="help-block success"></p>').insertAfter('#to').html('Success with transaction hash<br/>CMT - ' + data.cmtHash + '<br/>TEST - ' + data.testHash)
-      }
-    },
-    complete: () => {
-      $(this).find('input, button').prop('disabled', false)
+if (typeof recaptcha == 'undefined') {
+  $('<p class="help-block error"></p>').insertAfter('#to').text('Google Recaptcha not loaded. Please refresh the page and try again.')
+} else {
+  $('form button').click(function () {
+    $('#to').siblings('.help-block').remove()
+    addReg.lastIndex = 0
+    if (!addReg.test($('#to').val())) {
+      $('<p class="help-block error"></p>').insertAfter('#to').text('Please enter a valid address')
+      return false
     }
+    var recaptcha = grecaptcha.getResponse()
+    if (!recaptcha) {
+      $('<p class="help-block error"></p>').insertAfter('#to').text('Please verify the recaptcha')
+      return false
+    }
+    $(this).find('input, button').prop('disabled', true)
+    $.ajax({
+      url: '/send',
+      type: 'post',
+      dataType: 'json',
+      contentType:"application/json; charset=utf-8",
+      data: JSON.stringify({to: $('#to').val(), recaptcha: recaptcha}),
+      error: () => {
+        $('<p class="help-block error"></p>').insertAfter('#to').text('Error occured')
+      },
+      success: (data) => {
+        if (data.error) {
+          var failed = 'Failed'
+          if (typeof data.error == 'string') {
+            failed = data.error
+          }
+          $('<p class="help-block error"></p>').insertAfter('#to').text(failed)
+        } else if (data.cmtHash) {
+          $('<p class="help-block success"></p>').insertAfter('#to').html('Success with transaction hash<br/>CMT - ' + data.cmtHash + '<br/>TEST - ' + data.testHash)
+        }
+      },
+      complete: () => {
+        $(this).find('input, button').prop('disabled', false)
+      }
+    })
+    return false
   })
-  return false
-})
+}
   </script>
 
   </body>

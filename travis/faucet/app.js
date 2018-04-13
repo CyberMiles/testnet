@@ -71,7 +71,7 @@ function sendCmt(to, res) {
     {
       from: BaseAddr,
       to: to,
-      value: 1000
+      value: 1e21
     },
     function(err, cmtHash) {
       if (err) {
@@ -82,7 +82,7 @@ function sendCmt(to, res) {
       }
 
       // sendTEST
-      testTokenInstance.transfer.sendTransaction(to, 1000, {from: BaseAddr}, function(err, testHash) {
+      testTokenInstance.transfer.sendTransaction(to, 1e21, {from: BaseAddr}, function(err, testHash) {
         web3.personal.lockAccount(BaseAddr)
         res.json({"cmtHash": cmtHash, "testHash": testHash})
       })

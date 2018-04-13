@@ -6,38 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="style.css">
 
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-if (typeof jQuery == 'undefined') {
-  setTimeout(function() {
-    alert('The page is not loaded properly, please refresh and try again.')
-  }, 1000)
-}
-$(document).ready(function(){
-  $.ajax({
-    url: "http://travis-node.cybermiles.io:46657/status",
-    dataType: 'json',
-    error: function(){
-      $('#status-box').css('background', 'rgba(216, 0, 0, 0.1)');
-      $('#status').css('color', 'rgb(193, 0, 8)');
-      $('#status').html("Down (please check back later)");
-    },
-    success: function(json_x){
-      if (json_x.error) {
-        $('#status-box').css('background', 'rgba(216, 0, 0, 0.1)');
-        $('#status').css('color', 'rgb(193, 0, 8)');
-        $('#status').html("Error: " + json_x.error);
-      } else {
-        $('#status-box').css('background', 'rgba(30, 186, 0, 0.1)');
-        $('#status').css('color', 'rgb(19, 122, 0)');
-        $('#status').html("Last block: " + json_x.result.latest_block_height);
-      }
-    },
-    timeout: 5000
-  });
-});
-    </script>
   </head>
   <body>
   <nav>
@@ -83,6 +51,40 @@ $(document).ready(function(){
   <div class="footer">
     <p class="lead text-center">Happy testing!</p>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+if (typeof jQuery == 'undefined') {
+  setTimeout(function() {
+    alert('The page is not loaded properly, please refresh and try again.')
+  }, 1000)
+}
+$(document).ready(function(){
+  $.ajax({
+    url: "http://travis-node.cybermiles.io:46657/status",
+    dataType: 'json',
+    error: function(){
+      $('#status-box').css('background', 'rgba(216, 0, 0, 0.1)');
+      $('#status').css('color', 'rgb(193, 0, 8)');
+      $('#status').html("Down (please check back later)");
+    },
+    success: function(json_x){
+      if (json_x.error) {
+        $('#status-box').css('background', 'rgba(216, 0, 0, 0.1)');
+        $('#status').css('color', 'rgb(193, 0, 8)');
+        $('#status').html("Error: " + json_x.error);
+      } else {
+        $('#status-box').css('background', 'rgba(30, 186, 0, 0.1)');
+        $('#status').css('color', 'rgb(19, 122, 0)');
+        $('#status').html("Last block: " + json_x.result.latest_block_height);
+      }
+    },
+    timeout: 5000
+  });
+});
+  </script>
+
+  <script src='https://www.google.com/recaptcha/api.js'></script>
 
   <script>
 var addReg = /^0[xX][0-9a-zA-Z]{40}/g

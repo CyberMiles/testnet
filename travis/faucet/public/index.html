@@ -87,48 +87,57 @@ $(document).ready(function(){
   <script>
 var addReg = /^0[xX][0-9a-zA-Z]{40}/g
 if (typeof recaptcha == 'undefined') {
-  $('<p class="help-block error"></p>').insertAfter('#to').text('Google Recaptcha not loaded. Please refresh the page and try again.')
-} else {
-  $('form button').click(function () {
-    $('#to').siblings('.help-block').remove()
-    addReg.lastIndex = 0
-    if (!addReg.test($('#to').val())) {
-      $('<p class="help-block error"></p>').insertAfter('#to').text('Please enter a valid address')
-      return false
+  $('<p class="help-block"></p>').insertAfter('#to').text('Loading Google Recaptcha...')
+  var intv = setInterval(function() {
+    if (typeof recaptcha != 'undefined') {
+      clearInterval(intv)
+      $('#to').siblings('.help-block').remove()
     }
-    var recaptcha = grecaptcha.getResponse()
-    if (!recaptcha) {
-      $('<p class="help-block error"></p>').insertAfter('#to').text('Please verify the recaptcha')
-      return false
-    }
-    $(this).find('input, button').prop('disabled', true)
-    $.ajax({
-      url: '/send',
-      type: 'post',
-      dataType: 'json',
-      contentType:"application/json; charset=utf-8",
-      data: JSON.stringify({to: $('#to').val(), recaptcha: recaptcha}),
-      error: () => {
-        $('<p class="help-block error"></p>').insertAfter('#to').text('Error occured')
-      },
-      success: (data) => {
-        if (data.error) {
-          var failed = 'Failed'
-          if (typeof data.error == 'string') {
-            failed = data.error
-          }
-          $('<p class="help-block error"></p>').insertAfter('#to').text(failed)
-        } else if (data.cmtHash) {
-          $('<p class="help-block success"></p>').insertAfter('#to').html('Success with transaction hash<br/>CMT - ' + data.cmtHash + '<br/>TEST - ' + data.testHash)
-        }
-      },
-      complete: () => {
-        $(this).find('input, button').prop('disabled', false)
-      }
-    })
-    return false
-  })
+  }, 500)
 }
+$('form button').click(function() {
+  if (typeof window.recaptcha == 'undefined') {
+    $('<p class="help-block error"></p>').insertAfter('#to').text('Google Recaptcha not loaded. Please wait or refresh the page.')
+    return false
+  }
+  $('#to').siblings('.help-block').remove()
+  addReg.lastIndex = 0
+  if (!addReg.test($('#to').val())) {
+    $('<p class="help-block error"></p>').insertAfter('#to').text('Please enter a valid address')
+    return false
+  }
+  var recaptcha = grecaptcha.getResponse()
+  if (!recaptcha) {
+    $('<p class="help-block error"></p>').insertAfter('#to').text('Please verify the recaptcha')
+    return false
+  }
+  $('form').find('input, button').prop('disabled', true)
+  $.ajax({
+    url: '/send',
+    type: 'post',
+    dataType: 'json',
+    contentType:"application/json; charset=utf-8",
+    data: JSON.stringify({to: $('#to').val(), recaptcha: recaptcha}),
+    error: () => {
+      $('<p class="help-block error"></p>').insertAfter('#to').text('Error occured')
+    },
+    success: (data) => {
+      if (data.error) {
+        var failed = 'Failed'
+        if (typeof data.error == 'string') {
+          failed = data.error
+        }
+        $('<p class="help-block error"></p>').insertAfter('#to').text(failed)
+      } else if (data.cmtHash) {
+        $('<p class="help-block success"></p>').insertAfter('#to').html('Success with transaction hash<br/>CMT - ' + data.cmtHash + '<br/>TEST - ' + data.testHash)
+      }
+    },
+    complete: () => {
+      $('form').find('input, button').prop('disabled', false)
+    }
+  })
+  return false
+})
   </script>
 
   </body>

@@ -136,6 +136,7 @@ $('form button').click(function() {
     },
     complete: () => {
       $('form').find('input, button').prop('disabled', false)
+      grecaptcha.reset()
     }
   })
   return false

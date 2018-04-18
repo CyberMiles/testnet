@@ -2,6 +2,12 @@ const Web3 = require('web3')
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
+const Geetest = require('gt3-sdk')
+
+let geetest = new Geetest({
+  geetest_id: 'geetest_id',
+  geetest_key: 'geetest_key'
+})
 
 const BaseAddr = '0x7eff122b94897ea5b0e2a9abf47b86337fafebdc'
 const BasePwd = 'basepwd'
@@ -32,6 +38,11 @@ function langSwitch(req, res, next) {
   next()
 }
 
+app.get('/cn/init', (req, res) => {
+  geetest.register().then((data) => {
+    res.json(data)
+  })
+})
 
 app.post('/send', (req, res) => {
   // verify the recaptcha
@@ -76,6 +87,24 @@ app.post('/send', (req, res) => {
     }
   )
 
+})
+
+app.post('/cn/send', (req, res) => {
+  geetest.validate(false, {
+      geetest_challenge: req.body.geetest_challenge,
+      geetest_validate: req.body.geetest_validate,
+      geetest_seccode: req.body.geetest_seccode
+    },
+    function (err, success) {
+      if (err) {
+        res.json({ "error": "请求失败，请重试" });
+      } else if (!success) {
+        res.json({ "error": "验证失败" });
+      } else {
+        sendCmt(req.body.to, res)
+      }
+    }
+  )
 })
 
 function sendCmt(to, res) {

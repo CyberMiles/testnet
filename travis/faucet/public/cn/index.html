@@ -87,63 +87,83 @@ $(document).ready(function(){
 });
   </script>
 
-  <script src='https://www.google.com/recaptcha/api.js'></script>
+  <script src='/gt.js'></script>
 
   <script>
 var addReg = /^0[xX][0-9a-zA-Z]{40}/g
-if (typeof recaptcha == 'undefined') {
-  $('<p class="help-block"></p>').insertAfter('#to').text('Loading Google Recaptcha...')
-  var intv = setInterval(function() {
-    if (typeof recaptcha != 'undefined') {
-      clearInterval(intv)
+$('<p class="help-block"></p>').insertAfter('#to').text('正在加载验证组件...')
+$.ajax({
+  url: '/cn/init',
+  type: 'get',
+  dataType: 'json',
+  contentType: 'application/json; charset=utf-8',
+    error: function() {
       $('#to').siblings('.help-block').remove()
-    }
-  }, 500)
-}
-$('form button').click(function() {
-  if (typeof window.recaptcha == 'undefined') {
-    $('<p class="help-block error"></p>').insertAfter('#to').text('Google Recaptcha not loaded. Please wait or refresh the page.')
-    return false
-  }
-  $('#to').siblings('.help-block').remove()
-  addReg.lastIndex = 0
-  if (!addReg.test($('#to').val())) {
-    $('<p class="help-block error"></p>').insertAfter('#to').text('Please enter a valid address')
-    return false
-  }
-  var recaptcha = grecaptcha.getResponse()
-  if (!recaptcha) {
-    $('<p class="help-block error"></p>').insertAfter('#to').text('Please verify the recaptcha')
-    return false
-  }
-  $('form').find('input, button').prop('disabled', true)
-  $.ajax({
-    url: '/send',
-    type: 'post',
-    dataType: 'json',
-    contentType:"application/json; charset=utf-8",
-    data: JSON.stringify({to: $('#to').val(), recaptcha: recaptcha}),
-    error: () => {
-      $('<p class="help-block error"></p>').insertAfter('#to').text('Error occured')
+      $('<p class="help-block error"></p>').insertAfter('#to').text('组件加载失败，请刷新页面重试')
     },
-    success: (data) => {
-      if (data.error) {
-        var failed = 'Failed'
-        if (typeof data.error == 'string') {
-          failed = data.error
-        }
-        $('<p class="help-block error"></p>').insertAfter('#to').text(failed)
-      } else if (data.cmtHash) {
-        $('<p class="help-block success"></p>').insertAfter('#to').html('Success with transaction hash<br/>CMT - ' + data.cmtHash + '<br/>TEST - ' + data.testHash)
-      }
-    },
-    complete: () => {
-      $('form').find('input, button').prop('disabled', false)
-      grecaptcha.reset()
+    success: function(rdata) {
+      initGeetest({
+        gt: rdata.gt,
+        challenge: rdata.challenge,
+        offline: !rdata.success,
+        new_captcha: true,
+        product: 'bind',
+        lang: 'zh-cn',
+        https: true
+      }, function(captchaObj) {
+        captchaObj.onReady(function() {
+          $('#to').siblings('.help-block').remove()
+          $('form button').click(function() {
+            $('#to').siblings('.help-block').remove()
+            addReg.lastIndex = 0
+            if (!addReg.test($('#to').val())) {
+              $('<p class="help-block error"></p>').insertAfter('#to').text('请输入一个有效的账户地址')
+              return false
+            }
+            $('form').find('input, button').prop('disabled', true)
+            captchaObj.verify(); //显示验证码
+          })
+        }).onSuccess(function() {
+          var gtResult = captchaObj.getValidate();
+          $.ajax({
+            url: '/cn/send',
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({
+              to: $('#to').val(),
+              geetest_challenge: gtResult.geetest_challenge,
+              geetest_validate: gtResult.geetest_validate,
+              geetest_seccode: gtResult.geetest_seccode
+            }),
+            error: function() {
+              $('<p class="help-block error"></p>').insertAfter('#to').text('请求失败，请重试')
+            },
+            success: function(data) {
+              if (data.error) {
+                var failed = '验证失败'
+                if (typeof data.error == 'string') {
+                  failed = data.error
+                }
+                $('<p class="help-block error"></p>').insertAfter('#to').text(failed)
+              } else if (data.cmtHash) {
+                $('<p class="help-block success"></p>').insertAfter('#to').html('操作成功！ 交易哈希：<br/>CMT - ' + data.cmtHash + '<br/>TEST - ' + data.testHash)
+              }
+            },
+            complete: function() {
+              captchaObj.reset()
+              $('form').find('input, button').prop('disabled', false)
+            }
+          })
+        }).onError(function() {
+          captchaObj.reset()
+        }).onClose(function() {
+          $('form').find('input, button').prop('disabled', false)
+        })
+      })
     }
-  })
-  return false
 })
+
   </script>
 
   </body>

@@ -10,6 +10,7 @@ const TESTabi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"
 
 const app = express()
 
+app.use(langSwitch)
 app.use(express.static('public'))
 app.use(bodyParser.json());
 
@@ -19,6 +20,18 @@ if (typeof web3 !== 'undefined') {
   web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 }
 var testTokenInstance = web3.eth.contract(TESTabi).at('0xb6b29ef90120bec597939e0eda6b8a9164f75deb')
+
+function langSwitch(req, res, next) {
+  var aclan = req.headers['accept-language']
+  if (aclan != null && aclan.indexOf('zh') == 0 && aclan.search('zh-CN') > -1) {
+    if (req.url == '/') {
+      res.redirect('/cn/')
+      return
+    }
+  }
+  next()
+}
+
 
 app.post('/send', (req, res) => {
   // verify the recaptcha

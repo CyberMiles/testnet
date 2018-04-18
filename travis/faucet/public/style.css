@@ -107,6 +107,10 @@ button[disabled] {
   padding-top: 20px;
 }
 
+.links a {
+  color: #fff;
+}
+
 .text-center {
   text-align: center;
 }

@@ -17,6 +17,7 @@ nav {
   justify-content: space-between;
   padding: 10px;
   background-color: black;
+  z-index: 1;
 }
 
 nav a {
@@ -134,6 +135,10 @@ button[disabled] {
   border-bottom: 1px solid #ccc;
 }
 
+html:lang(en) .container {
+  margin: 0 auto 0;
+}
+
 .footer {
   padding: 25px 5px 50px;
   max-width: 600px;
@@ -167,4 +172,9 @@ pre, code {
   border: 1px solid #ddd;
   background: rgba(255, 221, 0, 0.2);
   padding: 10px;
+}
+
+#map {
+  margin: 65px auto 0;
+  height: 400px;
 }

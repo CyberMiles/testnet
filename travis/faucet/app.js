@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const Geetest = require('gt3-sdk')
+const geoip   = require('geoip-lite')
 
 let geetest = new Geetest({
   geetest_id: 'geetest_id',
@@ -42,6 +43,47 @@ app.get('/cn/init', (req, res) => {
   geetest.register().then((data) => {
     res.json(data)
   })
+})
+
+app.post('/nodes', (req, res) => {
+  request.get(
+    {
+      url: 'http://travis-node.cybermiles.io:46657/net_info'
+    },
+    (error, response, body) => {
+      if (error) {
+        if (error.errno) {
+          res.json({"error": error.errno})
+        } else {
+          res.json({"error": error})
+        }
+        return
+      }
+      if (!response || response.statusCode != 200) {
+        res.json({"error": "Can't get net info"})
+        return
+      }
+
+      try {
+        body = JSON.parse(body)
+
+        var peers = body.result.peers
+        var nodes = []
+        for (var i in peers) {
+          var ra = peers[i].node_info.remote_addr
+          ra = ra.substring(0, ra.indexOf(':'))
+          var geo = geoip.lookup(ra)
+          if (geo != null) {
+            nodes.push(geo)
+          }
+        }
+        res.json(nodes)
+      } catch (e) {
+        console.log(body)
+        res.json({"error": "Failed get net info"})
+      }
+    }
+  )
 })
 
 app.post('/send', (req, res) => {

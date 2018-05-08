@@ -5,6 +5,16 @@ const request = require('request')
 const Geetest = require('gt3-sdk')
 const geoip   = require('geoip-lite')
 
+const DefaultAddrs = [
+  '18.220.151.169',
+  '18.218.23.115',
+  '52.15.137.235',
+  '18.222.2.50',
+  '18.188.21.0',
+  '18.218.180.219',
+  '18.222.13.41'
+]
+
 let geetest = new Geetest({
   geetest_id: 'geetest_id',
   geetest_key: 'geetest_key'
@@ -77,6 +87,12 @@ app.post('/nodes', (req, res) => {
             nodes.push(geo)
           }
         }
+        DefaultAddrs.map( (da) => {
+          var geo = geoip.lookup(da)
+          if (geo != null) {
+            nodes.push(geo)
+          }
+        })
         res.json(nodes)
       } catch (e) {
         console.log(body)

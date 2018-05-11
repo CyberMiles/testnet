@@ -15,11 +15,22 @@ TRPCPORT=46657
 TP2PPORT=46656
 ERPCPORT=8545
 
+# process keystore
+VALS=()
+for filename in ./keystore/*;
+do
+  VALS+=("0x${filename##*-}")
+done
+
 # init params
 if [ -z "$CHAIN_ID" ]
   then
     echo "No chain_id supplied. "
     exit 1
+fi
+if [[ $VALIDATOR_COUNT -gt ${#VALS[@]} ]]; then
+  echo "${#VALS[@]} validators at most. "
+  exit
 fi
 if [[ (-z $INST_COUNT) || (! $INST_COUNT =~ ^[0-9]+$) ]]; then
   INST_COUNT=1
@@ -76,11 +87,23 @@ sed -i.bak "s/\"validators\":\[.*\]/\"validators\":\[$validators\]/" node1/genes
 jq --arg CHAIN_DATE $CHAIN_DATE --arg CHAIN_ID $CHAIN_ID \
   '(.genesis_time) |= $CHAIN_DATE | (.chain_id) |= $CHAIN_ID | (.validators[]|.power) |= 1000' \
   node1/genesis.json > tmp && mv tmp node1/genesis.json
+# set address(and power=1000 because of 1/3 issue)
+for ((i=1;i<$VALIDATOR_COUNT;i++)) do
+  jq --arg IDX $i --arg VAL ${VALS[i]} \
+  '(.validators[$IDX | tonumber ]|.address) |= $VAL | (.validators[$IDX | tonumber]|.power) |= 100' \
+  node1/genesis.json > tmp && mv tmp node1/genesis.json
+done
 
 # copy genesis.json from node1 to other nodes
 for ((i=2;i<=$INST_COUNT;i++)) do echo node$i/genesis.json; done | xargs -n 1 cp node1/genesis.json
 # format priv_validator.json
 for ((i=1;i<=$INST_COUNT;i++)) do jq . node$i/priv_validator.json > tmp && mv tmp node$i/priv_validator.json; done
+
+# copy keystore to nodes
+for ((i=1;i<=$VALIDATOR_COUNT;i++)) do
+  dir=$(dirname $PWD)/scripts
+  cp $dir/keystore/*.* node$i/keystore
+done
 
 # non-validator
 for ((i=$INST_COUNT;i>$VALIDATOR_COUNT;i--)) do

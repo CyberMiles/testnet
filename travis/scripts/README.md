@@ -27,14 +27,13 @@ curl http://localhost:46657/status
 
 ### Initialize
 
-Copy all files required to setup a testnet from repository. The default testnet is a 6 node cluster, with 4 validators in it.
-
 ```sh
 mkdir -p ~/volumes
 git clone https://github.com/CyberMiles/testnet.git ~/volumes/testnet
+cd ~/volumes/testnet/travis/scripts
 ```
 
-Or run `scripts/cluster.sh chain_id [count_of_all_nodes] [count_of_validators]` to setup a cluster differently.
+Run `./cluster.sh [chain_id] [count_of_all_nodes] [count_of_validators]` to initialize a cluster.
 
 ### Start up
 

@@ -65,11 +65,12 @@ do
   # make node* directory if not exist
   mkdir -p $dir && cd $dir && rm -rf *
 
-  travis node init --home .
-  # docker run --rm -v $dir:/travis ywonline/travis:latest node init --home=/travis
+  # travis node init --home .
+  TRAVIS_NODE="docker run --rm -v $dir:/travis ywonline/travis:latest node"
+  `$TRAVIS_NODE init --home /travis`
 
   if [[ $i -le $VALIDATOR_COUNT ]]; then
-    SEEDS+=("$(travis node show_node_id --home .)@node-$i:$TP2PPORT")
+    SEEDS+=("$(${TRAVIS_NODE} show_node_id --home /travis)@node-$i:$TP2PPORT")
   fi
   # test: replace first non-validator's genesis & priv_validator
   if [[ $i -eq $VALIDATOR_COUNT+1 && "$CHAIN_ID" == "test" ]]; then

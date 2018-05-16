@@ -1,0 +1,1 @@
+{"genesis_time":"0001-01-01T00:00:00Z","chain_id":"local","validators":[{"pub_key":{"type":"AC26791624DE60","value":"y2nvl4gUDkKutvyRcMwsASaHBfDdsnx4ZEZ18Z2abyQ="},"power":1000,"name":"","address":"0x7eff122b94897ea5b0e2a9abf47b86337fafebdc","cut":500,"max_amount":10000}],"app_hash":"","max_vals":4,"reserve_requirement_ratio":10}

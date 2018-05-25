@@ -2,9 +2,16 @@
 
 It's assumed that you have already [setup docker](https://docs.docker.com/install/) on your computer.
 
-Configuration and data will be stored at `/travis` in the container. This directory will also be exposed as a volume. The ports `8545`, `46656` and `46657` will be exposed to connect.
+Travis docker image is stored on [Docker Hub](https://hub.docker.com/r/ywonline/travis/tags/). Pull a image with tag, then tag it to `latest`, to make it default in your local:
 
-## Create and start a local node
+```sh
+docker pull ywonline/travis:tmup
+docker tag ywonline/travis:tmup ywonline/travis:latest
+```
+
+Note: Configuration and data will be stored at `/travis` in the container. This directory will also be exposed as a volume. The ports `8545`, `46656` and `46657` will be exposed to connect.
+
+## Create and start a single node
 
 ```sh
 # prepare volume folder
@@ -23,23 +30,26 @@ The chain's status is at the /status end-point:
 curl http://localhost:46657/status
 ```
 
-## Setup a testnet
+## Setup a local cluster
 
 ### Initialize
+
+Run `./cluster.sh [chain_id] [count_of_all_nodes] [count_of_validators]` to initialize a cluster:
 
 ```sh
 mkdir -p ~/volumes
 git clone https://github.com/CyberMiles/testnet.git ~/volumes/testnet
 cd ~/volumes/testnet/travis/scripts
-```
+git checkout tmup
 
-Run `./cluster.sh [chain_id] [count_of_all_nodes] [count_of_validators]` to initialize a cluster.
+# this will initialize a cluster for the next section.
+# Notes: please add `sudo` if you got error like "can't read XXX file or directory ..."
+./cluster.sh test 6 4
+```
 
 ### Start up
 
 ```sh
-cd ~/volumes/testnet/travis/scripts
-
 # start with 4 nodes which are all validators
 docker-compose up -d validators
 # then start 2 normal nodes and join the chain
@@ -66,6 +76,7 @@ curl http://localhost:46657/status
 ```
 
 ### Stops containers and cleanup
+
 ```sh
 docker-compose down
 ```

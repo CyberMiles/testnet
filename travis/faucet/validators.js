@@ -1,7 +1,7 @@
 const request = require('request')
 const fs = require('fs')
 const path = require('path')
-const dataFile = [process.cwd(), 'data', 'x.json'].join(path.sep)
+const dataFile = [process.cwd(), 'data', 'validators.json'].join(path.sep)
 
 fs.mkdir(process.cwd() + path.sep + 'data', () => {
 })

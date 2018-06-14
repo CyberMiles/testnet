@@ -61,7 +61,7 @@ setInterval(getCurrentHeight, interval);
   var sumVP = sumOnlineVP = 0
 
   function main() {
-    if (x.currentHeight < 2) {
+    if (x.currentHeight < 2 || x.handledHeight == x.currentHeight - 1) {
       setTimeout(main, interval)
       return
     }
@@ -131,7 +131,7 @@ setInterval(getCurrentHeight, interval);
 
     fs.writeFile(dataFile, JSON.stringify(x), (err) => {
       if (!err) {
-        if (x.handledHeight < x.currentHeight - 3) {
+        if (x.handledHeight < x.currentHeight - 1) {
           main()
         } else {
           setTimeout(main, interval)

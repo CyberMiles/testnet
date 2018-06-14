@@ -131,7 +131,7 @@ setInterval(getCurrentHeight, interval);
 
     fs.writeFile(dataFile, JSON.stringify(x), (err) => {
       if (!err) {
-        if (x.handledHeight < x.currentHeight - 2) {
+        if (x.handledHeight < x.currentHeight - 3) {
           main()
         } else {
           setTimeout(main, interval)

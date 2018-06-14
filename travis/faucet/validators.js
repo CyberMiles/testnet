@@ -114,7 +114,7 @@ setInterval(getCurrentHeight, interval);
       if (typeof lastSummAtIndex != 'undefined') {
         x.latestSumm.duration = blockTime - lastSummAtIndex.blockTime
         x.latestSumm.sumVP -= lastSummAtIndex.sumVP
-        x.latestSumm.sumOnlineVP -= lastSummAtIndex.sumVP
+        x.latestSumm.sumOnlineVP -= lastSummAtIndex.sumOnlineVP
       }
     }
     let newSumm = {}

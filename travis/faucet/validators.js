@@ -14,6 +14,7 @@ var x = {
   currentHeight: 0,
   currentBlockTimestamp: 0,
   handledHeight: 0,
+  count: 0,
   all: {}, // {addr, voting power, up block count, updated at, join at}
   latestSumm: {
     count: summCount,
@@ -42,7 +43,8 @@ function getCurrentHeight() {
       try {
         body = JSON.parse(body)
         x.currentHeight = body.result.latest_block_height || body.result.sync_info.latest_block_height
-        x.currentBlockTimestamp = body.result.latest_block_time || body.result.sync_info.latest_block_time
+        let bt = body.result.latest_block_time || body.result.sync_info.latest_block_time
+        x.currentBlockTimestamp = new Date(bt).getTime()
       } catch (e) {
         console.log(body)
         console.error('Failed get net status')
@@ -89,6 +91,7 @@ setInterval(getCurrentHeight, interval);
         xv.joinAt = x.handledHeight + 1
         xv.upCount = 0
         x.all[v.address] = xv
+        x.count++
       }
       xv.vp = v.voting_power
       xv.updatedAt = x.handledHeight + 1
@@ -208,4 +211,6 @@ function getOnlineValidators(height, received) {
   )
 }
 
-module.exports = x
+module.exports = () => {
+  return x
+}

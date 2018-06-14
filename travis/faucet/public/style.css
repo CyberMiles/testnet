@@ -178,3 +178,65 @@ pre, code {
   margin: 65px auto 0;
   height: 400px;
 }
+
+.validators.container {
+  max-width: 800px;
+}
+
+.validators.container h2 {
+  margin-top: 6rem;
+}
+
+.stats {
+  font-size: 0.9em;
+}
+
+.stats dt {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.stats dd {
+  margin-left: 28px;
+}
+
+.stats dd .stat-value {
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.all-table {
+  width: 100%;
+}
+
+.all-table {
+  border-color: white;
+}
+
+.all-table thead th {
+  color: white;
+  background-color: #454545;
+  font-size: 0.8em;
+  padding: 0.6em 0;
+  border: 1px solid white;
+  border-width: 0 0 0 1px;
+}
+.all-table thead th:first-child {
+  border-left-width: 0;
+}
+
+.all-table tbody td {
+  text-align: center;
+  font-size: 0.8em;
+  padding: 0.6em 0;
+  border: 1px solid gray;
+  border-width: 0 0 1px 1px;
+}
+
+.all-table tbody tr td:last-child {
+  border-right-width: 1px;
+}
+
+.all-table tbody tr:hover {
+  background-color: #ddd;
+}

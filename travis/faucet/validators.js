@@ -134,7 +134,7 @@ setInterval(getCurrentHeight, interval);
         if (x.handledHeight < x.currentHeight) {
           main()
         } else {
-          setTimeout(main, interval)
+          setTimeout(main, interval + 2000)
         }
       } else {
         console.error(err)

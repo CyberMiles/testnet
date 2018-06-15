@@ -78,7 +78,7 @@ do
   fi
   # moniker, vm(loglevel, rpcaddr)
   sed -i.bak "s/moniker = .*$/moniker = \"node-$i\"/g" ./config/config.toml
-  sed -i.bak "s/verbosity = .*$/verbosity = 1/g" ./config/config.toml
+  #sed -i.bak "s/verbosity = .*$/verbosity = 1/g" ./config/config.toml
   sed -i.bak "s/rpcaddr = .*$/rpcaddr = \"0.0.0.0\"/g" ./config/config.toml
 done
 

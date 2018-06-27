@@ -76,10 +76,11 @@ do
   if [[ $i -eq $VALIDATOR_COUNT+1 && "$CHAIN_ID" == "test" ]]; then
     cp ../../scripts/candidate/* ./config
   fi
-  # moniker, vm(loglevel, rpcaddr)
-  sed -i.bak "s/moniker = .*$/moniker = \"node-$i\"/g" ./config/config.toml
-  #sed -i.bak "s/verbosity = .*$/verbosity = 1/g" ./config/config.toml
-  sed -i.bak "s/rpcaddr = .*$/rpcaddr = \"0.0.0.0\"/g" ./config/config.toml
+  # moniker, log_level, vm(verbosity, rpcaddr)
+  sed -i.bak "s/moniker = .*$/moniker = \"node-$i\"/" ./config/config.toml
+  sed -i.bak "s/log_level = .*$/log_level = \"state:info,*:error\"/" ./config/config.toml
+  sed -i.bak "s/verbosity = .*$/verbosity = 3/" ./config/config.toml
+  sed -i.bak "s/rpcaddr = .*$/rpcaddr = \"0.0.0.0\"/" ./config/config.toml
 done
 
 cd $BASE_DIR

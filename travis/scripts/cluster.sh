@@ -67,7 +67,11 @@ do
 
   # travis node init --home .
   TRAVIS_NODE="docker run --rm -v $dir:/travis ywonline/travis:latest node"
-  `$TRAVIS_NODE init --home /travis --env $CHAIN_ID`
+  if [[ "$CHAIN_ID" == "staging" ]]; then
+    `$TRAVIS_NODE init --home /travis --env $CHAIN_ID`
+  else
+    `$TRAVIS_NODE init --home /travis`
+  fi
 
   if [[ $i -le $VALIDATOR_COUNT ]]; then
     SEEDS+=("$(${TRAVIS_NODE} show_node_id --home /travis)@node-$i:$TP2PPORT")

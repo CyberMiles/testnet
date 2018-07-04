@@ -29,8 +29,8 @@ services:
         command: ["node", "start", "--home", "/travis"]
         ports:
             - 8545:8545
-            - 46656:46656
-            - 46657:46657
+            - 26656:26656
+            - 26657:26657
     node-2:
         image: ywonline/travis:latest
         container_name: node-2
@@ -39,8 +39,8 @@ services:
         command: ["node", "start", "--home", "/travis"]
         ports:
             - 8555:8545
-            - 46666:46656
-            - 46667:46657
+            - 26666:26656
+            - 26667:26657
         depends_on:
             - node-1
     node-3:
@@ -51,8 +51,8 @@ services:
         command: ["node", "start", "--home", "/travis"]
         ports:
             - 8565:8545
-            - 46676:46656
-            - 46677:46657
+            - 26676:26656
+            - 26677:26657
         depends_on:
             - node-1
     node-4:
@@ -63,8 +63,8 @@ services:
         command: ["node", "start", "--home", "/travis"]
         ports:
             - 8575:8545
-            - 46686:46656
-            - 46687:46657
+            - 26686:26656
+            - 26687:26657
         depends_on:
             - node-1
     node-5:
@@ -75,8 +75,8 @@ services:
         command: ["node", "start", "--home", "/travis"]
         ports:
             - 8585:8545
-            - 46696:46656
-            - 46697:46657
+            - 26696:26656
+            - 26697:26657
         depends_on:
             - node-1
     node-6:
@@ -87,8 +87,8 @@ services:
         command: ["node", "start", "--home", "/travis"]
         ports:
             - 8595:8545
-            - 46606:46656
-            - 46607:46657
+            - 26606:26656
+            - 26607:26657
         depends_on:
             - node-1
     smoke-test:

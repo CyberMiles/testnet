@@ -9,7 +9,7 @@ docker pull ywonline/travis:tmup
 docker tag ywonline/travis:tmup ywonline/travis:latest
 ```
 
-Note: Configuration and data will be stored at `/travis` in the container. This directory will also be exposed as a volume. The ports `8545`, `46656` and `46657` will be exposed to connect.
+Note: Configuration and data will be stored at `/travis` in the container. This directory will also be exposed as a volume. The ports `8545`, `26656` and `26657` will be exposed to connect.
 
 ## Create and start a single node
 
@@ -21,13 +21,13 @@ mkdir -p ~/volumes/local
 docker run --rm -v ~/volumes/local:/travis ywonline/travis node init --home=/travis
 
 # start
-docker run --rm -v ~/volumes/local:/travis -p 46657:46657 -p 8545:8545 ywonline/travis node start --home=/travis
+docker run --rm -v ~/volumes/local:/travis -p 26657:26657 -p 8545:8545 ywonline/travis node start --home=/travis
 ```
 
 The chain's status is at the /status end-point:
 
 ```sh
-curl http://localhost:46657/status
+curl http://localhost:26657/status
 ```
 
 ## Setup a local cluster
@@ -72,7 +72,7 @@ docker-compose logs -f
 docker-compose logs -f -t node-1
 
 # chain's status is at the `/status` end-point
-curl http://localhost:46657/status
+curl http://localhost:26657/status
 ```
 
 ### Stops containers and cleanup

@@ -1,0 +1,7 @@
+{
+  "priv_key": {
+    "type": "tendermint/PrivKeyEd25519",
+    "value":
+      "6jzVEZVlGADxNF0ExSZSG1DEr6gsp+czpodqf6T/WW0e9YWRkSyDWiyNjf2NYsgKLEOM0fWaXiVGDWWyOt+hsg=="
+  }
+}

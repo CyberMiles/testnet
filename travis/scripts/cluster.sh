@@ -76,7 +76,7 @@ do
   if [[ $i -le $VALIDATOR_COUNT ]]; then
     SEEDS+=("$(${TRAVIS_NODE} show_node_id --home /travis)@node-$i:$TP2PPORT")
   fi
-  # test: replace first non-validator's genesis & priv_validator
+  # test: replace first non-validator's node_key & priv_validator
   if [[ $i -eq $VALIDATOR_COUNT+1 && "$CHAIN_ID" == "test" ]]; then
     cp ../../scripts/candidate/* ./config
   fi

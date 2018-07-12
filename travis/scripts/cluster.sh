@@ -93,6 +93,7 @@ cd $BASE_DIR
 SEED_STR=`IFS=,; echo "${SEEDS[*]}"`
 for ((i=1;i<=$INST_COUNT;i++)) do
   sed -i.bak "s/seeds = \"\"/seeds = \"$SEED_STR\"/g" node$i/config/config.toml
+  sed -i.bak "s/persistent_peers = \"\"/persistent_peers = \"$SEED_STR\"/g" node$i/config/config.toml
 done
 
 # genesis.json

@@ -1,0 +1,120 @@
+{
+  "genesis_time": "2018-07-17T04:02:22Z",
+  "chain_id": "testnet",
+  "validators": [
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "VPsUJ1Eb73tYPFhNjo/8YIWY9oxbnXyW+BDQsTSci2s="
+      },
+      "power": "10000",
+      "name": "",
+      "address": "0x7eff122b94897ea5b0e2a9abf47b86337fafebdc",
+      "comp_rate": "0.2",
+      "max_amount": 100000,
+      "website": "",
+      "location": "",
+      "email": "",
+      "Profile": ""
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "RwQlZGwmRUBTLao8RxjX8fYb9DL7XsQoOm2pupCdzm0="
+      },
+      "power": "10000",
+      "name": "",
+      "address": "0x283ed77f880d87dbde8721259f80517a38ae5b4f",
+      "comp_rate": "0.2",
+      "max_amount": 100000,
+      "website": "",
+      "location": "",
+      "email": "",
+      "Profile": ""
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "8k17vhQf+IcrmxBiftyccq6AAHAwcVmEr8GCHdTUnv4="
+      },
+      "power": "10000",
+      "name": "",
+      "address": "0xb736deeba456120a706f19b92f77aeac56fd8fb1",
+      "comp_rate": "0.2",
+      "max_amount": 100000,
+      "website": "",
+      "location": "",
+      "email": "",
+      "Profile": ""
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "fCVrAGvxlErOGH//hhoLuYsB0bNJJI+2BitYJ+Fl5o0="
+      },
+      "power": "10000",
+      "name": "",
+      "address": "0x38d7b32e7b5056b297baf1a1e950abbaa19ce949",
+      "comp_rate": "0.2",
+      "max_amount": 100000,
+      "website": "",
+      "location": "",
+      "email": "",
+      "Profile": ""
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "PoDmSVZ/qUOEuiM38CtZvm2XuNmExR0JkXMM9P9UhLU="
+      },
+      "power": "10000",
+      "name": "",
+      "address": "0xf616dd410161faa94737a88943cf582f95f0b630",
+      "comp_rate": "0.2",
+      "max_amount": 100000,
+      "website": "",
+      "location": "",
+      "email": "",
+      "Profile": ""
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "2Tl5oI35/+tljgDKzypt44rD1vjVHaWJFTBdVLsmcL4="
+      },
+      "power": "10000",
+      "name": "",
+      "address": "0xc156a70e4e3421c06f8b4780e03c97935a2564ed",
+      "comp_rate": "0.2",
+      "max_amount": 100000,
+      "website": "",
+      "location": "",
+      "email": "",
+      "Profile": ""
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "c+faf5BhMG1GSow4uw9dKtmAkCQ/HhZCWmwOK+FtD7A="
+      },
+      "power": "10000",
+      "name": "",
+      "address": "0x51a063839e9f09fd41709782dbcb90e9192f01a0",
+      "comp_rate": "0.2",
+      "max_amount": 100000,
+      "website": "",
+      "location": "",
+      "email": "",
+      "Profile": ""
+    }
+  ],
+  "app_hash": null,
+  "max_vals": 4,
+  "self_staking_ratio": "0.1",
+  "cube_pub_keys": [
+    {
+      "cube_batch": "01",
+      "pub_key": "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCiWpvDnwYFTqgSWPlA3VO8u+Yv\n9r8QGlRaYZFszUZEXUQxquGlFexMSVyFeqYjIokfPOEHHx2voqWgi3FKKlp6dkxw\nApP3T22y7Epqvtr+EfNybRta15snccZy47dY4UcmYxbGWFTaL66tz22pCAbjFrxY\n3IxaPPIjDX+FiXdJWwIDAQAB\n-----END PUBLIC KEY-----"
+    }
+  ]
+}

@@ -2,11 +2,17 @@
 
 It's assumed that you have already [setup docker](https://docs.docker.com/install/) on your computer.
 
-Travis docker image is stored on [Docker Hub](https://hub.docker.com/r/ywonline/travis/tags/). Pull a image with tag, then tag it to `latest`, to make it default in your local:
+Travis docker image is stored on [Docker Hub](https://hub.docker.com/r/ywonline/travis/tags/).
 
 ```sh
-docker pull ywonline/travis:tmup
-docker tag ywonline/travis:tmup ywonline/travis:latest
+docker pull ywonline/travis
+```
+
+You can also pull a image with tag(mapping to different git branch), then tag it to `latest`, to make it default in your local:
+
+```sh
+docker pull ywonline/travis:develop
+docker tag ywonline/travis:develop ywonline/travis:latest
 ```
 
 Note: Configuration and data will be stored at `/travis` in the container. This directory will also be exposed as a volume. The ports `8545`, `26656` and `26657` will be exposed to connect.
@@ -40,7 +46,7 @@ Run `./cluster.sh [chain_id] [count_of_all_nodes] [count_of_validators]` to init
 mkdir -p ~/volumes
 git clone https://github.com/CyberMiles/testnet.git ~/volumes/testnet
 cd ~/volumes/testnet/travis/scripts
-git checkout tmup
+git checkout master
 
 # this will initialize a cluster for the next section.
 # Notes: please add `sudo` if you got error like "can't read XXX file or directory ..."

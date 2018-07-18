@@ -67,11 +67,7 @@ do
 
   # travis node init --home .
   TRAVIS_NODE="docker run --rm -v $dir:/travis ywonline/travis:latest node"
-  if [[ "$CHAIN_ID" == "staging" ]]; then
-    `$TRAVIS_NODE init --home /travis --env $CHAIN_ID`
-  else
-    `$TRAVIS_NODE init --home /travis`
-  fi
+  `$TRAVIS_NODE init --home /travis --env $CHAIN_ID`
 
   if [[ $i -le $VALIDATOR_COUNT ]]; then
     SEEDS+=("$(${TRAVIS_NODE} show_node_id --home /travis)@node-$i:$TP2PPORT")
@@ -84,7 +80,15 @@ do
   sed -i.bak "s/moniker = .*$/moniker = \"node-$i\"/" ./config/config.toml
   sed -i.bak "s/log_level = .*$/log_level = \"state:info,*:error\"/" ./config/config.toml
   sed -i.bak "s/verbosity = .*$/verbosity = 3/" ./config/config.toml
-  sed -i.bak "s/rpcaddr = .*$/rpcaddr = \"0.0.0.0\"/" ./config/config.toml
+  if [[ "$CHAIN_ID" == "test" ]]; then
+    sed -i.bak "s/rpcaddr = .*$/rpcaddr = \"0.0.0.0\"/" ./config/config.toml
+    sed -i.bak "s/rpccorsdomain = .*$/rpccorsdomain = \"*\"/" ./config/config.toml
+    sed -i.bak "s/rpcvhosts = .*$/rpcvhosts = \"*\"/" ./config/config.toml
+  else
+    sed -i.bak "s/rpcaddr = .*$/rpcaddr = \"localhost\"/" ./config/config.toml
+    sed -i.bak "s/rpccorsdomain = .*$/rpccorsdomain = \"\"/" ./config/config.toml
+    sed -i.bak "s/rpcvhosts = .*$/rpcvhosts = \"localhost\"/" ./config/config.toml
+  fi
 done
 
 cd $BASE_DIR

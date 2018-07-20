@@ -120,6 +120,11 @@ for ((i=1;i<$VALIDATOR_COUNT;i++)) do
   '(.validators[$IDX | tonumber ]|.address) |= $VAL' \
   node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
 done
+# set max_vals=19 for testnet
+if [[ "$CHAIN_ID" == "testnet" ]]; then
+  jq '(.max_vals) |= 19 ' \
+  node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
+fi
 
 # copy genesis.json from node1 to other nodes
 for ((i=2;i<=$INST_COUNT;i++)) do echo node$i/config/genesis.json; done | xargs -n 1 cp node1/config/genesis.json

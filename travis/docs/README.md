@@ -20,7 +20,7 @@ Checkout the Travis TestNet config from our [Github repo](https://github.com/Cyb
 
 ```bash
 $ cd
-$ rm -rf .travis
+$ rm -rf ./travis
 $ git clone https://github.com/CyberMiles/testnet.git
 $ cd testnet/travis
 $ cp -r init $HOME/.travis

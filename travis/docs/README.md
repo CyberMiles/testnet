@@ -1,8 +1,9 @@
 # Join Travis TestNet (for Docker and Travis built from source)
 
-## Prerequisite (for Docker)
+## Prerequisite
+For Docker: It's assumed that you have [setup docker](https://docs.docker.com/engine/installation/).
 
-It's assumed that you have [setup docker](https://docs.docker.com/engine/installation/).
+For Travis built from source: It's assumed that you have [installed Travis via source builds](http://travis.readthedocs.io/en/latest/getting-started.html#use-docker). (Stop before you connect you a local node)
 
 ## Docker Image (for Docker)
 Docker image for Travis is stored on [Docker Hub](https://hub.docker.com/r/ywonline/travis/tags/). TestNet environment is using the [`lastest`](https://github.com/cybermiles/travis/tree/staging) branch which can be pulled automatically from Travis:

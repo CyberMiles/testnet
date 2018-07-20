@@ -1,11 +1,11 @@
 {
-  "genesis_time": "2018-07-17T04:02:22Z",
+  "genesis_time": "2018-07-20T05:44:17Z",
   "chain_id": "testnet",
   "validators": [
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "VPsUJ1Eb73tYPFhNjo/8YIWY9oxbnXyW+BDQsTSci2s="
+        "value": "6PCGFKtINur8bWHKqOAkASQxVDIL3Dwg9kRZbHrv/Wg="
       },
       "power": "10000",
       "name": "",
@@ -20,7 +20,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "RwQlZGwmRUBTLao8RxjX8fYb9DL7XsQoOm2pupCdzm0="
+        "value": "tmJe6cg8WZrjiiyfs9ADldmcCF6Jy5DwSnPmLSesAo8="
       },
       "power": "10000",
       "name": "",
@@ -35,7 +35,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "8k17vhQf+IcrmxBiftyccq6AAHAwcVmEr8GCHdTUnv4="
+        "value": "DpVg3WSmjhRv1Z1/61lV413pxjgt6DT20pPCnBtWLsc="
       },
       "power": "10000",
       "name": "",
@@ -50,7 +50,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "fCVrAGvxlErOGH//hhoLuYsB0bNJJI+2BitYJ+Fl5o0="
+        "value": "5tcEmMVSR6DZu56bW7INo+uO3MB+fJViq2OkhSO2cEI="
       },
       "power": "10000",
       "name": "",
@@ -65,7 +65,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "PoDmSVZ/qUOEuiM38CtZvm2XuNmExR0JkXMM9P9UhLU="
+        "value": "ccyaNQyX120IHd6rll8UBXbdV5SFHO/ttfvu+zInxp4="
       },
       "power": "10000",
       "name": "",
@@ -80,7 +80,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "2Tl5oI35/+tljgDKzypt44rD1vjVHaWJFTBdVLsmcL4="
+        "value": "8o1wuiU+njBL4GB8JwRGIC7a3G8q2aTAGVdcmQYmtsQ="
       },
       "power": "10000",
       "name": "",
@@ -95,7 +95,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "c+faf5BhMG1GSow4uw9dKtmAkCQ/HhZCWmwOK+FtD7A="
+        "value": "Dn+DVtAq3mj2hcFdWzQ4M307/UrrKH7kqVAaaZTXiyU="
       },
       "power": "10000",
       "name": "",
@@ -109,7 +109,7 @@
     }
   ],
   "app_hash": null,
-  "max_vals": 4,
+  "max_vals": 19,
   "self_staking_ratio": "0.1",
   "cube_pub_keys": [
     {

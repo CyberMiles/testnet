@@ -48,5 +48,5 @@ I[07-20|03:13:26.443] Updates to validators                        module=state 
 In a separate terminal console, you can access the Travis blockchain network through your local node.
 
 ```bash
-$ travis attach http://localhost:8545
+$ docker run --rm -it ywonline/travis attach http://172.17.0.2:8545
 ```

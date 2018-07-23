@@ -43,12 +43,16 @@ I[07-20|03:13:26.241] Committed state                              module=state 
 I[07-20|03:13:26.443] Executed block                               module=state height=3364 validTxs=0 invalidTxs=0
 I[07-20|03:13:26.443] Updates to validators                        module=state updates="[{\"address\":\"\",\"pub_key\":\"VPsUJ1Eb73tYPFhNjo/8YIWY9oxbnXyW+BDQsTSci2s=\",\"power\":27065},{\"address\":\"\",\"pub_key\":\"8k17vhQf+IcrmxBiftyccq6AAHAwcVmEr8GCHdTUnv4=\",\"power\":27048},{\"address\":\"\",\"pub_key\":\"PoDmSVZ/qUOEuiM38CtZvm2XuNmExR0JkXMM9P9UhLU=\",\"power\":27048},{\"address\":\"\",\"pub_key\":\"2Tl5oI35/+tljgDKzypt44rD1vjVHaWJFTBdVLsmcL4=\",\"power\":27048}]"
 ```
-
 To access the TestNet type the following in a seperte terminal console:
 
+first get your IP address then use your IP address to connect to the TestNet
+
 ```bash
+$ docker inspect -f '{{ .NetworkSettings.IPAddress }}' travis
+172.17.0.2:8545
 $ docker run --rm -it ywonline/travis attach http://172.17.0.2:8545
 ```
+
 ## Start the Node and Join Travis TestNet (for Travis built from source)
 
 Run the Travis application:

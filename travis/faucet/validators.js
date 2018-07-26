@@ -150,7 +150,7 @@ setInterval(getCurrentHeight, interval);
 function getValidators(height, received) {
   request.get(
     {
-      url: preUrl + '/validators?height=' + height
+      url: preUrl + '/validators?height="' + height + '"'
     },
     (error, response, body) => {
       if (error) {
@@ -180,7 +180,7 @@ function getValidators(height, received) {
 function getOnlineValidators(height, received) {
   request.get(
     {
-      url: preUrl + '/block?height=' + height
+      url: preUrl + '/block?height="' + height + '"'
     },
     (error, response, body) => {
       if (error) {

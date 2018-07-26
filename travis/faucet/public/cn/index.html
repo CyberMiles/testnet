@@ -73,7 +73,7 @@ if (typeof jQuery == 'undefined') {
 }
 $(document).ready(function(){
   $.ajax({
-    url: "http://travis-node.cybermiles.io:46657/status",
+    url: "http://travis-node.cybermiles.io:26657/status",
     dataType: 'json',
     error: function(){
       $('#status-box').css('background', 'rgba(216, 0, 0, 0.1)');
@@ -88,7 +88,7 @@ $(document).ready(function(){
       } else {
         $('#status-box').css('background', 'rgba(30, 186, 0, 0.1)');
         $('#status').css('color', 'rgb(19, 122, 0)');
-        $('#status').html("当前块高：" + json_x.result.latest_block_height);
+        $('#status').html("当前块高：" + json_x.result.sync_info.latest_block_height);
       }
     },
     timeout: 5000

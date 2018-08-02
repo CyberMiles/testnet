@@ -87,11 +87,11 @@ laddr = "tcp://0.0.0.0:26656"
 external_address = ""
 
 # Comma separated list of seed nodes to connect to
-seeds = "ffe2d3c8094a42adfd66ad078137a66560594b40@18.222.205.192:26656,1c5c46da0fd8570578fc9dcc007545a0577710e8@13.59.5.89:26656"
+seeds = "712aec5b9f47eccdc91e85db92f28551e6c68f4a@18.222.205.192:26656,73ae493833bad71ad2bf711dd913078fcc943f20@13.59.5.89:26656"
 
 # Comma separated list of nodes to keep persistent connections to
 # Do not add private peers to this list if you don't want them advertised
-persistent_peers = "ffe2d3c8094a42adfd66ad078137a66560594b40@18.222.205.192:26656,1c5c46da0fd8570578fc9dcc007545a0577710e8@13.59.5.89:26656"
+persistent_peers = "712aec5b9f47eccdc91e85db92f28551e6c68f4a@18.222.205.192:26656,73ae493833bad71ad2bf711dd913078fcc943f20@13.59.5.89:26656"
 
 # UPNP port forwarding
 upnp = false
@@ -204,8 +204,8 @@ prometheus_listen_addr = ":26660"
 [vm]
 chainid = 19
 rpc = true
-rpcapi = "cmt,eth,net,web3,personal,admin"
-rpcaddr = "0.0.0.0"
+rpcapi = "cmt,eth,net,web3,personal"
+rpcaddr = "localhost"
 rpcport = 8545
 rpccorsdomain = ""
 rpcvhosts = "localhost"

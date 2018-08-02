@@ -1,11 +1,11 @@
 {
-  "genesis_time": "2018-07-20T05:44:17Z",
+  "genesis_time": "2018-08-02T08:16:25Z",
   "chain_id": "testnet",
   "validators": [
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "6PCGFKtINur8bWHKqOAkASQxVDIL3Dwg9kRZbHrv/Wg="
+        "value": "Ehh7J94wgqWSmnXI7rbNjhZ5QYHjLYi8IG3uM703CPk="
       },
       "power": "10000",
       "name": "",
@@ -20,7 +20,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "tmJe6cg8WZrjiiyfs9ADldmcCF6Jy5DwSnPmLSesAo8="
+        "value": "b9r93m5NsyT2wPyVAj02oyZnhspTbIzRvrK2Gm2R/A8="
       },
       "power": "10000",
       "name": "",
@@ -35,7 +35,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "DpVg3WSmjhRv1Z1/61lV413pxjgt6DT20pPCnBtWLsc="
+        "value": "3zQXyFv6vBL4zjz/xEbd5lyaNAd2UsZd6zR8Ar1+FAg="
       },
       "power": "10000",
       "name": "",
@@ -50,7 +50,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "5tcEmMVSR6DZu56bW7INo+uO3MB+fJViq2OkhSO2cEI="
+        "value": "U+TXDrpzNIamEVpI1Kr8iP86ga0SvjaBcoszXPSJAAo="
       },
       "power": "10000",
       "name": "",
@@ -65,7 +65,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "ccyaNQyX120IHd6rll8UBXbdV5SFHO/ttfvu+zInxp4="
+        "value": "9KFJ5Gh7+jG1oxjLJCtuKfegjxRX3/SPuJ9rOb4+fBk="
       },
       "power": "10000",
       "name": "",
@@ -80,7 +80,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "8o1wuiU+njBL4GB8JwRGIC7a3G8q2aTAGVdcmQYmtsQ="
+        "value": "v8duE/ErnKKbs0ENen8hbYkORJOQXFCoGQEkY3opwSI="
       },
       "power": "10000",
       "name": "",
@@ -95,7 +95,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "Dn+DVtAq3mj2hcFdWzQ4M307/UrrKH7kqVAaaZTXiyU="
+        "value": "zl9Ht9XgEXWEUBGdkYSDrJ3qRd2dFzx2AGejDNBkel8="
       },
       "power": "10000",
       "name": "",

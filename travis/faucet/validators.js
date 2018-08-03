@@ -66,6 +66,10 @@ setInterval(getCurrentHeight, interval);
       return
     }
 
+    if (x.handledHeight > x.currentHeight) {
+    	x.handledHeight = 0
+    }
+
     getValidators(x.handledHeight + 1, (v) => {
       validators = v
       handle()

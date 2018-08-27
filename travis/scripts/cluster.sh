@@ -110,9 +110,9 @@ jq -M --argfile vals validators.json '.validators=$vals' \
   node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
 rm validators.json
 
-# set genesis_time, chain_id and validator.power
+# set genesis_time, chain_id
 jq --arg CHAIN_DATE $CHAIN_DATE --arg CHAIN_ID $CHAIN_ID \
-  '(.genesis_time) |= $CHAIN_DATE | (.chain_id) |= $CHAIN_ID | (.validators[]|.power) |= "10000" | (.validators[]|.comp_rate) |= "0.2"' \
+  '(.genesis_time) |= $CHAIN_DATE | (.chain_id) |= $CHAIN_ID' \
   node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
 # set address
 for ((i=1;i<$VALIDATOR_COUNT;i++)) do

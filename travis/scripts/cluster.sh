@@ -65,9 +65,14 @@ do
   # make node* directory if not exist
   mkdir -p $dir && cd $dir && rm -rf *
 
-  # travis node init --home .
+  # travis node init
   TRAVIS_NODE="docker run --rm -v $dir:/travis ywonline/travis:latest node"
-  `$TRAVIS_NODE init --home /travis --env $CHAIN_ID`
+  VM_GENESIS=""
+  if [[ "$CHAIN_ID" == "stress" ]]; then
+    cp ../../scripts/stress/vm-genesis.json .
+    VM_GENESIS="--vm-genesis /travis/vm-genesis.json"
+  fi
+  `$TRAVIS_NODE init --home /travis --env $CHAIN_ID $VM_GENESIS`
 
   if [[ $i -le $INST_COUNT ]]; then
     SEEDS+=("$(${TRAVIS_NODE} show_node_id --home /travis)@node-$i:$TP2PPORT")
@@ -76,11 +81,12 @@ do
   if [[ $i -eq $VALIDATOR_COUNT+1 && "$CHAIN_ID" == "test" ]]; then
     cp ../../scripts/candidate/* ./config
   fi
-  # moniker, log_level, vm(verbosity, rpcaddr)
+  # moniker, log_level, vm verbosity
   sed -i.bak "s/moniker = .*$/moniker = \"node-$i\"/" ./config/config.toml
   sed -i.bak "s/log_level = .*$/log_level = \"state:info,*:error\"/" ./config/config.toml
   sed -i.bak "s/verbosity = .*$/verbosity = 3/" ./config/config.toml
-  if [[ "$CHAIN_ID" == "test" ]]; then
+  # vm rpc config
+  if [[ "$CHAIN_ID" == "test" || "$CHAIN_ID" == "stress" ]]; then
     sed -i.bak "s/rpcaddr = .*$/rpcaddr = \"0.0.0.0\"/" ./config/config.toml
     sed -i.bak "s/rpccorsdomain = .*$/rpccorsdomain = \"*\"/" ./config/config.toml
     sed -i.bak "s/rpcvhosts = .*$/rpcvhosts = \"*\"/" ./config/config.toml
@@ -114,15 +120,29 @@ rm validators.json
 jq --arg CHAIN_DATE $CHAIN_DATE --arg CHAIN_ID $CHAIN_ID \
   '(.genesis_time) |= $CHAIN_DATE | (.chain_id) |= $CHAIN_ID' \
   node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
-# set address
+
+# set validator's address
 for ((i=1;i<$VALIDATOR_COUNT;i++)) do
   jq --arg IDX $i --arg VAL ${VALS[i]} \
   '(.validators[$IDX | tonumber ]|.address) |= $VAL' \
   node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
 done
+# set validator's max_amount & shares for stress
+if [[ "$CHAIN_ID" == "stress" ]]; then
+  for ((i=0;i<$VALIDATOR_COUNT;i++)) do
+    jq --arg IDX $i \
+    '(.validators[$IDX | tonumber ]|.max_amount) |= 100000 | (.validators[$IDX | tonumber ]|.shares) |= 10000' \
+    node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
+  done
+fi
+
 # set max_vals=19, backup_vals=5 for testnet
 if [[ "$CHAIN_ID" == "testnet" ]]; then
-  jq '(.max_vals) |= 19 | (.backup_vals) |= 5' \
+  jq '(.params.max_vals) |= 19 | (.params.backup_vals) |= 5' \
+  node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
+# set max_vals=5, backup_vals=2, unstake_waiting_period=2, reward_interval=3, cal_stake_interval=60 for stress
+elif [[ "$CHAIN_ID" == "stress" ]]; then
+  jq '(.params.max_vals) |= 5 | (.params.backup_vals) |= 2 | (.params.unstake_waiting_period) |= 2 | (.params.cal_vp_interval) |= 3 | (.params.cal_stake_interval) |= 60' \
   node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
 fi
 

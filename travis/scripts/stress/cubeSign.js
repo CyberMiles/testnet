@@ -20,7 +20,7 @@ WPa9dcsV51zwmQZXZvkCQQChnQLBs6BbH6O85ePXSSbe7RUvHua6EEkmCNkIw+vT
 
 module.exports = (address, nonce) => {
   let data = address + "|" + nonce
-  logger.debug({ data })
+  // logger.debug(data)
 
   let hash = crypto
     .createHash("sha256")
@@ -34,6 +34,6 @@ module.exports = (address, nonce) => {
     new Buffer(hash, "hex")
   )
   let sig = signature.toString("hex")
-  logger.debug({ sig })
+  // logger.debug(sig)
   return sig
 }

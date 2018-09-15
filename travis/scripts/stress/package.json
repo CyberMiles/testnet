@@ -1,7 +1,7 @@
 {
   "main": "index.js",
   "scripts": {
-    "test": "node index"
+    "start": "node index"
   },
   "license": "ISC",
   "dependencies": {

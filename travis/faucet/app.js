@@ -7,13 +7,13 @@ const geoip   = require('geoip-lite')
 const validators = require('./validators')
 
 const DefaultAddrs = [
-  '18.220.151.169',
-  '18.188.237.161',
-  '52.15.137.235',
-  '18.222.2.50',
-  '18.188.21.0',
-  '18.218.180.219',
-  '18.222.13.41'
+  '18.223.152.127',
+  '18.224.1.174',
+  '18.191.179.73',
+  '13.59.82.19',
+  '52.15.83.91',
+  '52.15.41.127',
+  '13.59.104.238'
 ]
 
 let geetest = new Geetest({
@@ -81,7 +81,7 @@ app.post('/nodes', (req, res) => {
         var peers = body.result.peers
         var nodes = []
         for (var i in peers) {
-          var ra = peers[i].node_info.remote_addr
+          var ra = peers[i].node_info.listen_addr
           ra = ra.substring(0, ra.indexOf(':'))
           var geo = geoip.lookup(ra)
           if (geo != null) {
@@ -96,7 +96,7 @@ app.post('/nodes', (req, res) => {
         })
         res.json(nodes)
       } catch (e) {
-        console.log(body)
+        console.log(e)
         res.json({"error": "Failed get net info"})
       }
     }

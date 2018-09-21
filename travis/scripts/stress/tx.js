@@ -69,24 +69,20 @@ exports.generateWithdraws = () => {
 }
 
 exports.send = async function(transactions, stats) {
-  logger.info(`sending ${transactions.length} transactions...`)
+  let total = transactions.length
+  logger.info(`sending ${total} transactions...`)
 
   return new Promise((resolve, reject) => {
-    async.eachLimit(
-      transactions,
-      Constants.PARALLEL_LIMIT,
-      sendRawTx.bind(null, stats),
-      err => {
-        if (err) {
-          logger.error(err)
-          reject(err)
-        } else {
-          stats.stop()
-          logger.info(`sending transactions done. ${stats}`)
-          resolve()
-        }
+    async.eachLimit(transactions, Constants.PARALLEL_LIMIT, sendRawTx.bind(null, stats), err => {
+      if (err) {
+        logger.error(err)
+        reject(err)
+      } else {
+        stats.stop()
+        logger.info(`sending transactions done. ${stats}`)
+        resolve()
       }
-    )
+    })
   })
 }
 
@@ -95,9 +91,7 @@ function sendRawTx(stats, transaction, callback) {
   web3.cmt.sendRawTx(rawTx, (err, resp) => {
     stats.incr(Statistics.Counter.sent)
     if (err) {
-      logger.error(
-        `send ${txInner.type} error, ${from}-${nonce}, ${err.message}`
-      )
+      logger.error(`send ${txInner.type} error, ${from}-${nonce}, ${err.message}`)
       callback(err)
     } else {
       logger.debug(`response, ${from}-${nonce}, ${JSON.stringify(resp)}`)
@@ -120,9 +114,7 @@ function sendRawTx(stats, transaction, callback) {
           // check error
           let err = resp.check_tx.log
           if (err) {
-            logger.error(
-              `delegate error, ${from}-${nonce}, ${resp.check_tx.log}`
-            )
+            logger.error(`delegate error, ${from}-${nonce}, ${resp.check_tx.log}`)
             if (Utils.getKeyByValue(Status.Account, err)) {
               account.status = err
             } else if (Utils.getKeyByValue(Status.Validator, err)) {

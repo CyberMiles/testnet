@@ -10,22 +10,20 @@ async function step1(stats) {
   let txs = Tx.generateDelegates()
   if (txs.length == 0) {
     stats.stop()
-    logger.info(`step1 done. ${stats}`)
+    logger.info(`STEP1 done. ${stats}`)
     Object.keys(Context.Delegations).forEach(val => {
       let dele = Context.Delegations[val]
       Object.keys(dele).forEach(acc => {
         let delegator = dele[acc]
         delegator.batch =
-          delegator.amount > 0
-            ? Math.floor(delegator.amount * Constants.WITHDRAW_PERC)
-            : 0
+          delegator.amount > 0 ? Math.floor(delegator.amount * Constants.WITHDRAW_PERC) : 0
       })
     })
     logger.debug(JSON.stringify(Context, null, 2))
     Utils.reset()
 
     // continue to step 2
-    logger.info("step2...")
+    logger.info("STEP2 start...")
     stats.reset()
     await step2(stats)
   } else {
@@ -43,14 +41,14 @@ async function step2(stats) {
   let txs = Tx.generateWithdraws()
   if (txs.length == 0) {
     stats.stop()
-    logger.info(`step2 done. ${stats}`)
+    logger.info(`STEP2 done. ${stats}`)
     logger.debug(JSON.stringify(Context, null, 2))
     Utils.reset()
 
-    //TODO: go back to step 1
-    // logger.info("step1...")
-    // stats.reset()
-    // await step1()
+    // go back to step 1
+    logger.info("STEP1 start...")
+    stats.reset()
+    await step1(stats)
   } else {
     // send transactions and wait for responses
     let txStats = new Statistics(stats)
@@ -62,8 +60,9 @@ async function step2(stats) {
 
 async function main() {
   await Utils.init()
+  Utils.checkInterval()
 
-  logger.info("step1 start...")
+  logger.info("STEP1 start...")
   let stats = new Statistics()
   await step1(stats)
 }

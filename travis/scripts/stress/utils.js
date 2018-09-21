@@ -102,3 +102,27 @@ async function getNonce() {
 exports.getKeyByValue = (obj, value) => {
   return Object.keys(obj).find(key => obj[key] == value)
 }
+
+exports.timeout = ms => {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+exports.checkInterval = () => {
+  logger.info(`start at height ${web3.cmt.blockNumber}...`)
+
+  let processed = 0
+  let lastBlock = -1
+
+  let interval = setInterval(() => {
+    let currentBlock = web3.cmt.blockNumber
+    if (lastBlock == currentBlock) return
+
+    let block = web3.cmt.getCmtBlock(currentBlock)
+    let numTxs = block.block.header.num_txs
+    processed += numTxs
+    lastBlock = currentBlock
+    logger.info(`block height=${currentBlock}, txs=${numTxs}, total=${processed}`)
+  }, Constants.CHECK_INTERVAL)
+
+  return interval
+}

@@ -10,7 +10,7 @@
   "nonce": "0xdeadbeefdeadbeef",
   "timestamp": "0x0",
   "extraData": "0x",
-  "gasLimit": "0xf00000000",
+  "gasLimit": "0x1E8480000",
   "difficulty": "0x40",
   "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
   "coinbase": "0x0000000000000000000000000000000000000000",

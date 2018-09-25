@@ -138,7 +138,7 @@ fi
 
 # set max_vals=19, backup_vals=5 for testnet
 if [[ "$CHAIN_ID" == "testnet" ]]; then
-  jq '(.params.max_vals) |= 19 | (.params.backup_vals) |= 5' \
+  jq '(.params.max_vals) |= 4 | (.params.backup_vals) |= 2' \
   node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
 # set max_vals=5, backup_vals=2, unstake_waiting_period=2, reward_interval=3, cal_stake_interval=60 for stress
 elif [[ "$CHAIN_ID" == "stress" ]]; then

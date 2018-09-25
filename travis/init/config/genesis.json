@@ -1,11 +1,11 @@
 {
-  "genesis_time": "2018-09-25T08:28:53Z",
+  "genesis_time": "2018-09-25T14:01:36Z",
   "chain_id": "testnet",
   "validators": [
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "Rbrzh5DAu53Q/IdP/IxxU9tVVni4kKnPJ1v1bL0TN0s="
+        "value": "LDz9aEK/BtmTBbcTZHk8n99pHNYJ9IyckWTbgIUkbrI="
       },
       "power": "1",
       "shares": 1000000,
@@ -21,7 +21,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "4Co8AVJy500o4I75je7e6IEA/MNJWXhwLctbC2f9mqI="
+        "value": "xmu9NlVVkpIH14lSLEwOTgg+zwdIEo+BPZaj6Ubav5E="
       },
       "power": "1",
       "shares": 1000000,
@@ -37,7 +37,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "5kSz0r8Fyj5kTEQjRBa8cIH8W3W2hSxe5uuA2D8mqdk="
+        "value": "ImCAiYqcqcXYQO2CH6QDM3j7/p05Efr0ECfP1hizQVc="
       },
       "power": "1",
       "shares": 1000000,
@@ -53,7 +53,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "w/3jPGz1PBveangqzSwDue3d7ccz1nc2MMjCUdJlvOY="
+        "value": "eaU3g6v6DL/HbvASBUcl1pFqv8mJJqj4mG39kQGbo/o="
       },
       "power": "1",
       "shares": 1000000,
@@ -69,7 +69,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "Tgp52meeFJQPcC0O6srtoirdNObm/iwtI5pkO5DQhKg="
+        "value": "ggNZ+IfZGQnGRM67ZjNGYnh1U7HBkGE8+fjxHlvoD7s="
       },
       "power": "1",
       "shares": 1000000,
@@ -85,7 +85,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "TbEQnUzJ7ZtzDL8XxOUztNB+xlkiQGQ3hSK9wXkst4w="
+        "value": "b5xfgH0Y1sHrLkSrxv7oUC9AYnkXPpd6OrfFGn1zlwk="
       },
       "power": "1",
       "shares": 1000000,
@@ -101,7 +101,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "jbC5qv4uX3XW488JN94Gbj8iBnTXDVg324vd5gZ7HMQ="
+        "value": "Lv1/3fWI1xj9Gj8RjdqV+EkmNUgl+ch5zySQhqS7yVI="
       },
       "power": "1",
       "shares": 1000000,
@@ -117,8 +117,8 @@
   ],
   "app_hash": null,
   "params": {
-    "max_vals": 19,
-    "backup_vals": 5,
+    "max_vals": 4,
+    "backup_vals": 2,
     "self_staking_ratio": "1/10",
     "inflation_rate": "2/25",
     "validator_size_threshold": "3/25",

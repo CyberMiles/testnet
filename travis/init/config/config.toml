@@ -87,11 +87,11 @@ laddr = "tcp://0.0.0.0:26656"
 external_address = ""
 
 # Comma separated list of seed nodes to connect to
-seeds = "6affbadcbba24db68b20c111b61a4ad807699db4@18.223.152.127:26656,45d5ef8dd3853699254384a771ec23bf1ae907a3@13.59.104.238:26656"
+seeds = "f59afaecdb40b979336edd27e754764e49017d4e@18.223.152.127:26656,891dc2e4d29b06a02bc75571a84315023249b197@13.59.104.238:26656"
 
 # Comma separated list of nodes to keep persistent connections to
 # Do not add private peers to this list if you don't want them advertised
-persistent_peers = "6affbadcbba24db68b20c111b61a4ad807699db4@18.223.152.127:26656,45d5ef8dd3853699254384a771ec23bf1ae907a3@13.59.104.238:26656"
+persistent_peers = "f59afaecdb40b979336edd27e754764e49017d4e@18.223.152.127:26656,891dc2e4d29b06a02bc75571a84315023249b197@13.59.104.238:26656"
 
 # UPNP port forwarding
 upnp = false

@@ -127,9 +127,9 @@ do
     sed -i.bak "s/rpccorsdomain = .*$/rpccorsdomain = \"\"/" ./config/config.toml
     sed -i.bak "s/rpcvhosts = .*$/rpcvhosts = \"localhost\"/" ./config/config.toml
   fi
-  if [[ "$CHAIN_ID" == "mainnet" && $i -gt 1 ]]; then
+  if [[ "$CHAIN_ID" == "mainnet" ]]; then
     sed -i.bak "s/rpcapi = .*$/rpcapi = \"cmt,eth,net,web3\"/" ./config/config.toml
-    sed -i.bak "s/rpc = .*$/rpc = false/" ./config/config.toml
+    # sed -i.bak "s/rpc = .*$/rpc = false/" ./config/config.toml
   fi
 done
 
@@ -170,7 +170,7 @@ done
 # set validator's max_amount & shares for stress
 if [[ "$CHAIN_ID" == "mainnet" ]]; then
   for ((i=0;i<$VALIDATOR_COUNT;i++)) do
-    jq --arg IDX $i --arg VALNAME "val-${i+1}"\
+    jq --arg IDX $i --arg VALNAME "val-"$((i+1)) \
     '(.validators[$IDX | tonumber ]|.max_amount) |= 20000000 | (.validators[$IDX | tonumber ]|.shares) |= 2000000
     | (.validators[$IDX | tonumber ]|.name) |= $VALNAME | (.validators[$IDX | tonumber]|.comp_rate) |= "11/20"' \
     node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json

@@ -1,11 +1,11 @@
 {
-  "genesis_time": "2018-09-25T14:01:36Z",
-  "chain_id": "testnet",
+  "genesis_time": "2018-09-28T12:11:55Z",
+  "chain_id": "testnet-0928",
   "validators": [
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "LDz9aEK/BtmTBbcTZHk8n99pHNYJ9IyckWTbgIUkbrI="
+        "value": "OjGFO9l4J2694WZ4CCbQsHnrTZngwq+0uxiWM2e+Ews="
       },
       "power": "1",
       "shares": 1000000,
@@ -21,7 +21,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "xmu9NlVVkpIH14lSLEwOTgg+zwdIEo+BPZaj6Ubav5E="
+        "value": "OEYJqboZEdFm+zm8NbzT3EMtpTAu+FeeR5YZMRlVi2I="
       },
       "power": "1",
       "shares": 1000000,
@@ -37,7 +37,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "ImCAiYqcqcXYQO2CH6QDM3j7/p05Efr0ECfP1hizQVc="
+        "value": "CNftipzrF3BYRG7nvMKRUXgBbHB6cQo48tu6iz6kLpg="
       },
       "power": "1",
       "shares": 1000000,
@@ -53,7 +53,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "eaU3g6v6DL/HbvASBUcl1pFqv8mJJqj4mG39kQGbo/o="
+        "value": "GWseI6O3lwVR1iYXXQ/hYkxSvKWIUIxn2SjgrdT3gH4="
       },
       "power": "1",
       "shares": 1000000,
@@ -69,7 +69,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "ggNZ+IfZGQnGRM67ZjNGYnh1U7HBkGE8+fjxHlvoD7s="
+        "value": "hGyj4vi8bkuPXP0IjxOXIO5nRoCXdveP7yxwWyN/+vw="
       },
       "power": "1",
       "shares": 1000000,
@@ -85,7 +85,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "b5xfgH0Y1sHrLkSrxv7oUC9AYnkXPpd6OrfFGn1zlwk="
+        "value": "99ooHruEmt3uOmeoNVZ1T0pCXGFSKzB5Hfhs1k1o32U="
       },
       "power": "1",
       "shares": 1000000,
@@ -101,7 +101,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "Lv1/3fWI1xj9Gj8RjdqV+EkmNUgl+ch5zySQhqS7yVI="
+        "value": "HpC7ZTaaRVWw/DCdgjB/F7JXaC3g9NfhDUnnOo/jwUc="
       },
       "power": "1",
       "shares": 1000000,
@@ -129,13 +129,14 @@
     "transfer_fund_proposal": 2000000,
     "change_params_proposal": 2000000,
     "deploy_libeni_proposal": 2000000,
+    "retire_program_proposal": 2000000,
     "gas_price": 2000000000,
     "min_staking_amount": 1000,
     "validators_block_award_ratio": "9/10",
     "max_slash_blocks": 12,
     "slash_ratio": "1/1000",
     "slash_enabled": false,
-    "cube_pub_keys": "[{\"cube_batch\":\"01\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCiWpvDnwYFTqgSWPlA3VO8u+Yv\\n9r8QGlRaYZFszUZEXUQxquGlFexMSVyFeqYjIokfPOEHHx2voqWgi3FKKlp6dkxw\\nApP3T22y7Epqvtr+EfNybRta15snccZy47dY4UcmYxbGWFTaL66tz22pCAbjFrxY\\n3IxaPPIjDX+FiXdJWwIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"02\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ8FL6/9zul+X7bFSRiWAzFiAE\\n9vHYbClEHwlC7zUZ/JWzU7UT5S2qnYsseYF2WFjJtrGwHRAlTUyPtCpxV8f1uJsI\\nl+/N9l6torUHwkhhib1catUSd/T72ltjvVyyg5LQjtRsskFnv3wM/yxYotrgnOs+\\ndRpU6WI5XPCIyZqsGwIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"05\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCZ7Fw+1ddvy5OPFftbea0MxewW\\nKUTb/E7B4/MHvLz2h7f7snyveFwxxj7QwxaCoVxobEq6AigIlUFUXLM8Y598/jts\\nTaN+jh4xdoQN7qKwrbz1MWGf58Aa78Vnoj54B7V0LSajVbLJSZNUEI/24HLcG2iN\\nTD3dSvH0ARvRJJ9hZQIDAQAB\\n-----END PUBLIC KEY-----\"}]",
+    "cube_pub_keys": "[{\"cube_batch\":\"01\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCiWpvDnwYFTqgSWPlA3VO8u+Yv\\n9r8QGlRaYZFszUZEXUQxquGlFexMSVyFeqYjIokfPOEHHx2voqWgi3FKKlp6dkxw\\nApP3T22y7Epqvtr+EfNybRta15snccZy47dY4UcmYxbGWFTaL66tz22pCAbjFrxY\\n3IxaPPIjDX+FiXdJWwIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"02\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ8FL6/9zul+X7bFSRiWAzFiAE\\n9vHYbClEHwlC7zUZ/JWzU7UT5S2qnYsseYF2WFjJtrGwHRAlTUyPtCpxV8f1uJsI\\nl+/N9l6torUHwkhhib1catUSd/T72ltjvVyyg5LQjtRsskFnv3wM/yxYotrgnOs+\\ndRpU6WI5XPCIyZqsGwIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"05\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCZ7Fw+1ddvy5OPFftbea0MxewW\\nKUTb/E7B4/MHvLz2h7f7snyveFwxxj7QwxaCoVxobEq6AigIlUFUXLM8Y598/jts\\nTaN+jh4xdoQN7qKwrbz1MWGf58Aa78Vnoj54B7V0LSajVbLJSZNUEI/24HLcG2iN\\nTD3dSvH0ARvRJJ9hZQIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"06\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCbNyWzuQ8Vrgrf9no9woaqgifc\\njxfpvpuREoGNBOzOMl9BpyTa45t2ZeigE+xLaTZJc7dVTMQus8ik1b2qQcmrdViR\\nbFx2P7tPg5z0DlDVXjq2G8Q3mP0WBEhGzyfycUmaT+yXoLu/UzGfFhr5nVztkUVD\\noOHnTtsKCKQekuY3YwIDAQAB\\n-----END PUBLIC KEY-----\"}]",
     "low_price_tx_gas_limit": 500000,
     "low_price_tx_slots_cap": 100,
     "set_comp_rate": 21000,

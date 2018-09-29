@@ -17,7 +17,7 @@ ERPCPORT=8545
 
 # process keystore
 VALS=()
-if [[ "$CHAIN_ID" == "mainnet" ]]; then
+if [[ "$CHAIN_ID" == "staging" ]]; then
   VALS=(
     "0x631A728482047b34eee75286463d64aa99B11D11"
     "0x605bDc26fF6e23890d2b7241474a654A5d08269e"
@@ -100,8 +100,8 @@ do
   if [[ "$CHAIN_ID" == "stress" ]]; then
     cp ../../scripts/stress/vm-genesis.json .
     VM_GENESIS="--vm-genesis /travis/vm-genesis.json"
-  elif [[ "$CHAIN_ID" == "mainnet" ]]; then
-    cp ../../../../cybermiles-issues/mainnet/genesis/vm-genesis.json .
+  elif [[ "$CHAIN_ID" == "staging" ]]; then
+    cp ../../../../cybermiles-issues/staging-utils/genesis/vm-genesis.json .
     VM_GENESIS="--vm-genesis /travis/vm-genesis.json"
   fi
   `$TRAVIS_NODE init --home /travis --env $CHAIN_ID $VM_GENESIS`
@@ -127,7 +127,7 @@ do
     sed -i.bak "s/rpccorsdomain = .*$/rpccorsdomain = \"\"/" ./config/config.toml
     sed -i.bak "s/rpcvhosts = .*$/rpcvhosts = \"localhost\"/" ./config/config.toml
   fi
-  if [[ "$CHAIN_ID" == "mainnet" ]]; then
+  if [[ "$CHAIN_ID" == "staging" ]]; then
     sed -i.bak "s/rpcapi = .*$/rpcapi = \"cmt,eth,net,web3\"/" ./config/config.toml
     # sed -i.bak "s/rpc = .*$/rpc = false/" ./config/config.toml
   fi
@@ -159,7 +159,7 @@ jq --arg CHAIN_DATE $CHAIN_DATE --arg CHAIN_ID $CHAIN_ID \
 
 # set validator's address
 START=1
-if [[ "$CHAIN_ID" == "mainnet" ]]; then
+if [[ "$CHAIN_ID" == "staging" ]]; then
   START=0
 fi
 for ((i=$START;i<$VALIDATOR_COUNT;i++)) do
@@ -167,8 +167,8 @@ for ((i=$START;i<$VALIDATOR_COUNT;i++)) do
   '(.validators[$IDX | tonumber ]|.address) |= $VAL' \
   node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
 done
-# set validator's max_amount & shares for stress
-if [[ "$CHAIN_ID" == "mainnet" ]]; then
+# set validator's max_amount & shares
+if [[ "$CHAIN_ID" == "staging" ]]; then
   for ((i=0;i<$VALIDATOR_COUNT;i++)) do
     jq --arg IDX $i --arg VALNAME "val-"$((i+1)) \
     '(.validators[$IDX | tonumber ]|.max_amount) |= 20000000 | (.validators[$IDX | tonumber ]|.shares) |= 2000000
@@ -187,8 +187,8 @@ fi
 if [[ "$CHAIN_ID" == "testnet" ]]; then
   jq '(.params.max_vals) |= 4 | (.params.backup_vals) |= 2' \
   node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
-# set max_vals=19, backup_vals=5, cal_stake_interval=8640, cal_vp_interval=360, foundation_address= for mainnet
-elif [[ "$CHAIN_ID" == "mainnet" ]]; then
+# set max_vals=19, backup_vals=5, cal_stake_interval=8640, cal_vp_interval=360, foundation_address= for staging
+elif [[ "$CHAIN_ID" == "staging" ]]; then
   jq '(.params.max_vals) |= 19 | (.params.backup_vals) |= 5
   | (.params.cal_stake_interval) |= 8640 | (.params.cal_vp_interval) |= 360
   | (.params.foundation_address) |= "0xace111260c7e9a2e612e04686f5ad800fc7ca769"' \
@@ -203,11 +203,11 @@ fi
 # copy genesis.json from node1 to other nodes
 for ((i=2;i<=$INST_COUNT;i++)) do echo node$i/config/genesis.json; done | xargs -n 1 cp node1/config/genesis.json
 
-# copy keystore to node1 if not mainnet
-if [[ "$CHAIN_ID" != "mainnet" ]]; then
+# copy keystore to node1 if not staging
+if [[ "$CHAIN_ID" != "staging" ]]; then
   dir=$(dirname $PWD)/scripts
   cp $dir/keystore/*.* node1/keystore
-# no keystore on mainnet
+# no keystore on staging
 else
   rm node*/keystore/*
 fi

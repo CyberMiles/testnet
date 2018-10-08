@@ -95,7 +95,7 @@ do
   mkdir -p $dir && cd $dir && rm -rf *
 
   # travis node init
-  TRAVIS_NODE="docker run --rm -v $dir:/travis ywonline/travis:latest node"
+  TRAVIS_NODE="docker run --rm -v $dir:/travis cybermiles/travis:latest node"
   VM_GENESIS=""
   if [[ "$CHAIN_ID" == "stress" ]]; then
     cp ../../scripts/stress/vm-genesis.json .

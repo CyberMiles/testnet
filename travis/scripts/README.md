@@ -2,17 +2,17 @@
 
 It's assumed that you have already [setup docker](https://docs.docker.com/install/) on your computer.
 
-Travis docker image is stored on [Docker Hub](https://hub.docker.com/r/ywonline/travis/tags/).
+Travis docker image is stored on [Docker Hub](https://hub.docker.com/r/cybermiles/travis/tags/).
 
 ```sh
-docker pull ywonline/travis
+docker pull cybermiles/travis
 ```
 
 You can also pull a image with tag(mapping to different git branch), then tag it to `latest`, to make it default in your local:
 
 ```sh
-docker pull ywonline/travis:develop
-docker tag ywonline/travis:develop ywonline/travis:latest
+docker pull cybermiles/travis:develop
+docker tag cybermiles/travis:develop cybermiles/travis:latest
 ```
 
 Note: Configuration and data will be stored at `/travis` in the container. This directory will also be exposed as a volume. The ports `8545`, `26656` and `26657` will be exposed to connect.
@@ -24,10 +24,10 @@ Note: Configuration and data will be stored at `/travis` in the container. This 
 mkdir -p ~/volumes/local
 
 # initialize
-docker run --rm -v ~/volumes/local:/travis ywonline/travis node init --home=/travis
+docker run --rm -v ~/volumes/local:/travis cybermiles/travis node init --home=/travis
 
 # start
-docker run --rm -v ~/volumes/local:/travis -p 26657:26657 -p 8545:8545 ywonline/travis node start --home=/travis
+docker run --rm -v ~/volumes/local:/travis -p 26657:26657 -p 8545:8545 cybermiles/travis node start --home=/travis
 ```
 
 The chain's status is at the /status end-point:

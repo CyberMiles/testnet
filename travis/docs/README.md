@@ -1,15 +1,17 @@
 # Join Travis TestNet (for Docker and Travis built from source)
 
 ## Prerequisite
+
 For Docker: It's assumed that you have [setup docker](https://docs.docker.com/engine/installation/).
 
 For Travis built from source: It's assumed that you have [installed Travis via source builds](http://travis.readthedocs.io/en/latest/getting-started.html#use-docker). (Stop before you connect you a local node)
 
 ## Docker Image (for Docker)
-Docker image for Travis is stored on [Docker Hub](https://hub.docker.com/r/ywonline/travis/tags/). TestNet environment is using the [`lastest`](https://github.com/cybermiles/travis/tree/staging) branch which can be pulled automatically from Travis:
+
+Docker image for Travis is stored on [Docker Hub](https://hub.docker.com/r/cybermiles/travis/tags/). TestNet environment is using the [`lastest`](https://github.com/cybermiles/travis/tree/staging) branch which can be pulled automatically from Travis:
 
 ```bash
-$ docker pull ywonline/travis
+$ docker pull cybermiles/travis
 ```
 
 Note: Configuration and data will be stored at /travis directory in the container. The directory will also be exposed as a volume. The ports 8545, 26656 and 26657 will be exposed for connection.
@@ -32,7 +34,7 @@ $ cp -r init $HOME/.travis
 Run the docker Travis application:
 
 ```bash
-$ docker run --name travis -v $HOME/.travis:/travis -p 26657:26657 -p 8545:8545 -t ywonline/travis node start --home /travis
+$ docker run --name travis -v $HOME/.travis:/travis -p 26657:26657 -p 8545:8545 -t cybermiles/travis node start --home /travis
 ```
 
 Now your node is syncing with TestNet, the output will look like:
@@ -43,6 +45,7 @@ I[07-20|03:13:26.241] Committed state                              module=state 
 I[07-20|03:13:26.443] Executed block                               module=state height=3364 validTxs=0 invalidTxs=0
 I[07-20|03:13:26.443] Updates to validators                        module=state updates="[{\"address\":\"\",\"pub_key\":\"VPsUJ1Eb73tYPFhNjo/8YIWY9oxbnXyW+BDQsTSci2s=\",\"power\":27065},{\"address\":\"\",\"pub_key\":\"8k17vhQf+IcrmxBiftyccq6AAHAwcVmEr8GCHdTUnv4=\",\"power\":27048},{\"address\":\"\",\"pub_key\":\"PoDmSVZ/qUOEuiM38CtZvm2XuNmExR0JkXMM9P9UhLU=\",\"power\":27048},{\"address\":\"\",\"pub_key\":\"2Tl5oI35/+tljgDKzypt44rD1vjVHaWJFTBdVLsmcL4=\",\"power\":27048}]"
 ```
+
 To access the TestNet type the following in a seperte terminal console:
 
 first get your IP address then use your IP address to connect to the TestNet
@@ -50,7 +53,7 @@ first get your IP address then use your IP address to connect to the TestNet
 ```bash
 $ docker inspect -f '{{ .NetworkSettings.IPAddress }}' travis
 172.17.0.2:8545
-$ docker run --rm -it ywonline/travis attach http://172.17.0.2:8545
+$ docker run --rm -it cybermiles/travis attach http://172.17.0.2:8545
 ```
 
 ## Start the Node and Join Travis TestNet (for Travis built from source)

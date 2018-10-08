@@ -32,7 +32,7 @@ services:
       - node-10
 
   node-1:
-    image: ywonline/travis:latest
+    image: cybermiles/travis:latest
     container_name: node-1
     volumes:
       - ~/volumes/testnet/travis/nodes/node1:/travis
@@ -42,7 +42,7 @@ services:
       - 26656:26656
       - 26657:26657
   node-2:
-    image: ywonline/travis:latest
+    image: cybermiles/travis:latest
     container_name: node-2
     volumes:
       - ~/volumes/testnet/travis/nodes/node2:/travis
@@ -54,7 +54,7 @@ services:
     depends_on:
       - node-1
   node-3:
-    image: ywonline/travis:latest
+    image: cybermiles/travis:latest
     container_name: node-3
     volumes:
       - ~/volumes/testnet/travis/nodes/node3:/travis
@@ -66,7 +66,7 @@ services:
     depends_on:
       - node-1
   node-4:
-    image: ywonline/travis:latest
+    image: cybermiles/travis:latest
     container_name: node-4
     volumes:
       - ~/volumes/testnet/travis/nodes/node4:/travis
@@ -78,7 +78,7 @@ services:
     depends_on:
       - node-1
   node-5:
-    image: ywonline/travis:latest
+    image: cybermiles/travis:latest
     container_name: node-5
     volumes:
       - ~/volumes/testnet/travis/nodes/node5:/travis
@@ -90,7 +90,7 @@ services:
     depends_on:
       - node-1
   node-6:
-    image: ywonline/travis:latest
+    image: cybermiles/travis:latest
     container_name: node-6
     volumes:
       - ~/volumes/testnet/travis/nodes/node6:/travis
@@ -102,7 +102,7 @@ services:
     depends_on:
       - node-1
   node-7:
-    image: ywonline/travis:latest
+    image: cybermiles/travis:latest
     container_name: node-7
     volumes:
       - ~/volumes/testnet/travis/nodes/node7:/travis
@@ -114,7 +114,7 @@ services:
     depends_on:
       - node-1
   node-8:
-    image: ywonline/travis:latest
+    image: cybermiles/travis:latest
     container_name: node-8
     volumes:
       - ~/volumes/testnet/travis/nodes/node8:/travis
@@ -126,7 +126,7 @@ services:
     depends_on:
       - node-1
   node-9:
-    image: ywonline/travis:latest
+    image: cybermiles/travis:latest
     container_name: node-9
     volumes:
       - ~/volumes/testnet/travis/nodes/node9:/travis
@@ -138,7 +138,7 @@ services:
     depends_on:
       - node-1
   node-10:
-    image: ywonline/travis:latest
+    image: cybermiles/travis:latest
     container_name: node-10
     volumes:
       - ~/volumes/testnet/travis/nodes/node10:/travis

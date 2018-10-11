@@ -1,0 +1,103 @@
+{
+  "genesis_time": "2018-10-11T09:07:43Z",
+  "chain_id": "mainnet",
+  "validators": [
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "neo2Redf7tTWIBHTHgpdV+AoUWOnDTY7ZW3qE70fBS0="
+      },
+      "power": "1",
+      "shares": 1000000,
+      "name": "val-1",
+      "address": "0x631A728482047b34eee75286463d64aa99B11D11",
+      "comp_rate": "1/5",
+      "max_amount": 10000000,
+      "website": "",
+      "location": "",
+      "email": "",
+      "Profile": ""
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "nbIqUSDwPCDYyCltDdYa3LkM66jK/70prJZB2KRzaec="
+      },
+      "power": "1",
+      "shares": 1000000,
+      "name": "val-2",
+      "address": "0x605bDc26fF6e23890d2b7241474a654A5d08269e",
+      "comp_rate": "1/5",
+      "max_amount": 10000000,
+      "website": "",
+      "location": "",
+      "email": "",
+      "Profile": ""
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "IkcUSR3FcY0qtkyjP+myV42aYGhWoBXkMSLlPX23QLw="
+      },
+      "power": "1",
+      "shares": 1000000,
+      "name": "val-3",
+      "address": "0x329C77B8C64b353c62B286fc98269c616F58d683",
+      "comp_rate": "1/5",
+      "max_amount": 10000000,
+      "website": "",
+      "location": "",
+      "email": "",
+      "Profile": ""
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "Kqh2RQ4AzR/dbZtGRyFUgb/YFylMC/+nEmTy5HqhnO0="
+      },
+      "power": "1",
+      "shares": 1000000,
+      "name": "val-4",
+      "address": "0x558cB42B69cE6984859C9ad60642Fa22bAc1CB03",
+      "comp_rate": "1/5",
+      "max_amount": 10000000,
+      "website": "",
+      "location": "",
+      "email": "",
+      "Profile": ""
+    }
+  ],
+  "app_hash": null,
+  "params": {
+    "max_vals": 19,
+    "backup_vals": 5,
+    "self_staking_ratio": "1/10",
+    "inflation_rate": "2/25",
+    "validator_size_threshold": "3/25",
+    "unstake_waiting_period": 60480,
+    "proposal_expire_period": 60480,
+    "declare_candidacy_gas": 1000000,
+    "update_candidacy_gas": 1000000,
+    "set_comp_rate_gas": 21000,
+    "update_candidate_account_gas": 1000000,
+    "accept_candidate_account_update_request_gas": 1000000,
+    "transfer_fund_proposal_gas": 2000000,
+    "change_params_proposal_gas": 2000000,
+    "deploy_libeni_proposal_gas": 2000000,
+    "retire_program_proposal_gas": 2000000,
+    "upgrade_program_proposal_gas": 2000000,
+    "gas_price": 2000000000,
+    "min_staking_amount": 1000,
+    "validators_block_award_ratio": "9/10",
+    "max_slash_blocks": 12,
+    "slash_ratio": "1/1000",
+    "slash_enabled": false,
+    "cube_pub_keys": "[{\"cube_batch\":\"01\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCiWpvDnwYFTqgSWPlA3VO8u+Yv\\n9r8QGlRaYZFszUZEXUQxquGlFexMSVyFeqYjIokfPOEHHx2voqWgi3FKKlp6dkxw\\nApP3T22y7Epqvtr+EfNybRta15snccZy47dY4UcmYxbGWFTaL66tz22pCAbjFrxY\\n3IxaPPIjDX+FiXdJWwIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"02\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ8FL6/9zul+X7bFSRiWAzFiAE\\n9vHYbClEHwlC7zUZ/JWzU7UT5S2qnYsseYF2WFjJtrGwHRAlTUyPtCpxV8f1uJsI\\nl+/N9l6torUHwkhhib1catUSd/T72ltjvVyyg5LQjtRsskFnv3wM/yxYotrgnOs+\\ndRpU6WI5XPCIyZqsGwIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"05\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCZ7Fw+1ddvy5OPFftbea0MxewW\\nKUTb/E7B4/MHvLz2h7f7snyveFwxxj7QwxaCoVxobEq6AigIlUFUXLM8Y598/jts\\nTaN+jh4xdoQN7qKwrbz1MWGf58Aa78Vnoj54B7V0LSajVbLJSZNUEI/24HLcG2iN\\nTD3dSvH0ARvRJJ9hZQIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"06\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCbNyWzuQ8Vrgrf9no9woaqgifc\\njxfpvpuREoGNBOzOMl9BpyTa45t2ZeigE+xLaTZJc7dVTMQus8ik1b2qQcmrdViR\\nbFx2P7tPg5z0DlDVXjq2G8Q3mP0WBEhGzyfycUmaT+yXoLu/UzGfFhr5nVztkUVD\\noOHnTtsKCKQekuY3YwIDAQAB\\n-----END PUBLIC KEY-----\"}]",
+    "low_price_tx_gas_limit": 500000,
+    "low_price_tx_slots_cap": 100,
+    "foundation_address": "0x8C88FED745bd859D5c78A3990C1d35bBBC3C2234",
+    "cal_stake_interval": 8640,
+    "cal_vp_interval": 360,
+    "cal_avg_staking_date_interval": 8640
+  }
+}

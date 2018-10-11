@@ -113,7 +113,7 @@ do
     curl https://raw.githubusercontent.com/CyberMiles/testnet/master/travis/init-staging/vm-genesis.json > ./vm-genesis.json
     VM_GENESIS="--vm-genesis /travis/vm-genesis.json"
   elif [[ "$CHAIN_ID" == "mainnet" ]]; then
-    curl https://raw.githubusercontent.com/CyberMiles/testnet/master/travis/init-staging/vm-genesis.json > ./vm-genesis.json
+    curl https://raw.githubusercontent.com/CyberMiles/testnet/master/travis/init-mainnet/vm-genesis.json > ./vm-genesis.json
     VM_GENESIS="--vm-genesis /travis/vm-genesis.json"
   fi
   `$TRAVIS_NODE init --home /travis --env $CHAIN_ID $VM_GENESIS`

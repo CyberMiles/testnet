@@ -87,11 +87,10 @@ laddr = "tcp://0.0.0.0:26656"
 external_address = ""
 
 # Comma separated list of seed nodes to connect to
-seeds = "6663fe27abda99dd097d0b02a5b54790eb7602af@18.223.152.127:26656,dc9270efc18c6d7c106f89f6d3b2600b5a86e793@13.59.104.238:26656"
+seeds = "ae59c403205ae5893a7041b8be04694e915754b0@18.220.30.167:26656,d19ae8fadf52b0f329ecde51c805683558294a6c@18.191.158.191:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-# Do not add private peers to this list if you don't want them advertised
-persistent_peers = "6663fe27abda99dd097d0b02a5b54790eb7602af@18.223.152.127:26656,dc9270efc18c6d7c106f89f6d3b2600b5a86e793@13.59.104.238:26656"
+persistent_peers = "ae59c403205ae5893a7041b8be04694e915754b0@18.220.30.167:26656,d19ae8fadf52b0f329ecde51c805683558294a6c@18.191.158.191:26656"
 
 # UPNP port forwarding
 upnp = false
@@ -112,10 +111,10 @@ max_num_peers = 50
 max_packet_msg_payload_size = 1024
 
 # Rate at which packets can be sent, in bytes/second
-send_rate = 512000
+send_rate = 5120000
 
 # Rate at which packets can be received, in bytes/second
-recv_rate = 512000
+recv_rate = 5120000
 
 # Set true to enable the peer-exchange reactor
 pex = true
@@ -200,6 +199,12 @@ prometheus = false
 
 # Address to listen for Prometheus collector(s) connections
 prometheus_listen_addr = ":26660"
+
+# Maximum number of simultaneous connections.
+# If you want to accept more significant number than the default, make sure
+# you increase your OS limits.
+# 0 - unlimited.
+max_open_connections = 3
 
 [vm]
 chainid = 19

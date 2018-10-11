@@ -1,11 +1,11 @@
 {
-  "genesis_time": "2018-09-28T12:11:55Z",
-  "chain_id": "testnet-0928",
+  "genesis_time": "2018-10-11T14:56:17Z",
+  "chain_id": "testnet-1011",
   "validators": [
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "OjGFO9l4J2694WZ4CCbQsHnrTZngwq+0uxiWM2e+Ews="
+        "value": "H3Lt1MgnypS7AxjHIPhUm6ULmY8ZYkmOOzAC2BYKGRg="
       },
       "power": "1",
       "shares": 1000000,
@@ -21,7 +21,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "OEYJqboZEdFm+zm8NbzT3EMtpTAu+FeeR5YZMRlVi2I="
+        "value": "nPojdfSyBzzF9ZXucS3lknbP7CDIcwoZUYqPRqfmnoU="
       },
       "power": "1",
       "shares": 1000000,
@@ -37,7 +37,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "CNftipzrF3BYRG7nvMKRUXgBbHB6cQo48tu6iz6kLpg="
+        "value": "t5AbfYr4Ewy6vnjHzVZU3Y+aPUEQWL4w+21c1WQz7bs="
       },
       "power": "1",
       "shares": 1000000,
@@ -53,60 +53,12 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "GWseI6O3lwVR1iYXXQ/hYkxSvKWIUIxn2SjgrdT3gH4="
+        "value": "/ZtWfmxoAm41dXgvA7u71Cgvjkj0jyn4YLZqGno9X0g="
       },
       "power": "1",
       "shares": 1000000,
       "name": "",
       "address": "0x38d7b32e7b5056b297baf1a1e950abbaa19ce949",
-      "comp_rate": "1/5",
-      "max_amount": 10000000,
-      "website": "",
-      "location": "",
-      "email": "",
-      "Profile": ""
-    },
-    {
-      "pub_key": {
-        "type": "tendermint/PubKeyEd25519",
-        "value": "hGyj4vi8bkuPXP0IjxOXIO5nRoCXdveP7yxwWyN/+vw="
-      },
-      "power": "1",
-      "shares": 1000000,
-      "name": "",
-      "address": "0xf616dd410161faa94737a88943cf582f95f0b630",
-      "comp_rate": "1/5",
-      "max_amount": 10000000,
-      "website": "",
-      "location": "",
-      "email": "",
-      "Profile": ""
-    },
-    {
-      "pub_key": {
-        "type": "tendermint/PubKeyEd25519",
-        "value": "99ooHruEmt3uOmeoNVZ1T0pCXGFSKzB5Hfhs1k1o32U="
-      },
-      "power": "1",
-      "shares": 1000000,
-      "name": "",
-      "address": "0xc156a70e4e3421c06f8b4780e03c97935a2564ed",
-      "comp_rate": "1/5",
-      "max_amount": 10000000,
-      "website": "",
-      "location": "",
-      "email": "",
-      "Profile": ""
-    },
-    {
-      "pub_key": {
-        "type": "tendermint/PubKeyEd25519",
-        "value": "HpC7ZTaaRVWw/DCdgjB/F7JXaC3g9NfhDUnnOo/jwUc="
-      },
-      "power": "1",
-      "shares": 1000000,
-      "name": "",
-      "address": "0x51a063839e9f09fd41709782dbcb90e9192f01a0",
       "comp_rate": "1/5",
       "max_amount": 10000000,
       "website": "",
@@ -123,13 +75,17 @@
     "inflation_rate": "2/25",
     "validator_size_threshold": "3/25",
     "unstake_waiting_period": 60480,
-    "proposal_expire_period": 604800,
-    "declare_candidacy": 1000000,
-    "update_candidacy": 1000000,
-    "transfer_fund_proposal": 2000000,
-    "change_params_proposal": 2000000,
-    "deploy_libeni_proposal": 2000000,
-    "retire_program_proposal": 2000000,
+    "proposal_expire_period": 60480,
+    "declare_candidacy_gas": 1000000,
+    "update_candidacy_gas": 1000000,
+    "set_comp_rate_gas": 21000,
+    "update_candidate_account_gas": 1000000,
+    "accept_candidate_account_update_request_gas": 1000000,
+    "transfer_fund_proposal_gas": 2000000,
+    "change_params_proposal_gas": 2000000,
+    "deploy_libeni_proposal_gas": 2000000,
+    "retire_program_proposal_gas": 2000000,
+    "upgrade_program_proposal_gas": 2000000,
     "gas_price": 2000000000,
     "min_staking_amount": 1000,
     "validators_block_award_ratio": "9/10",
@@ -139,7 +95,6 @@
     "cube_pub_keys": "[{\"cube_batch\":\"01\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCiWpvDnwYFTqgSWPlA3VO8u+Yv\\n9r8QGlRaYZFszUZEXUQxquGlFexMSVyFeqYjIokfPOEHHx2voqWgi3FKKlp6dkxw\\nApP3T22y7Epqvtr+EfNybRta15snccZy47dY4UcmYxbGWFTaL66tz22pCAbjFrxY\\n3IxaPPIjDX+FiXdJWwIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"02\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ8FL6/9zul+X7bFSRiWAzFiAE\\n9vHYbClEHwlC7zUZ/JWzU7UT5S2qnYsseYF2WFjJtrGwHRAlTUyPtCpxV8f1uJsI\\nl+/N9l6torUHwkhhib1catUSd/T72ltjvVyyg5LQjtRsskFnv3wM/yxYotrgnOs+\\ndRpU6WI5XPCIyZqsGwIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"05\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCZ7Fw+1ddvy5OPFftbea0MxewW\\nKUTb/E7B4/MHvLz2h7f7snyveFwxxj7QwxaCoVxobEq6AigIlUFUXLM8Y598/jts\\nTaN+jh4xdoQN7qKwrbz1MWGf58Aa78Vnoj54B7V0LSajVbLJSZNUEI/24HLcG2iN\\nTD3dSvH0ARvRJJ9hZQIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"06\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCbNyWzuQ8Vrgrf9no9woaqgifc\\njxfpvpuREoGNBOzOMl9BpyTa45t2ZeigE+xLaTZJc7dVTMQus8ik1b2qQcmrdViR\\nbFx2P7tPg5z0DlDVXjq2G8Q3mP0WBEhGzyfycUmaT+yXoLu/UzGfFhr5nVztkUVD\\noOHnTtsKCKQekuY3YwIDAQAB\\n-----END PUBLIC KEY-----\"}]",
     "low_price_tx_gas_limit": 500000,
     "low_price_tx_slots_cap": 100,
-    "set_comp_rate": 21000,
     "foundation_address": "0x7eff122b94897ea5b0e2a9abf47b86337fafebdc",
     "cal_stake_interval": 1,
     "cal_vp_interval": 1,

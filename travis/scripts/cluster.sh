@@ -44,6 +44,15 @@ if [[ "$CHAIN_ID" == "staging" ]]; then
     "0xc2fb6025572541e6f7a84141B0E841FE1884d4Fb"
     "0xB0Bd389d56a85cfE5BB5824558D0833f47C8c051"
     "0x9fBA559484cB25630E0AA70Ba5FB9D7cE0162cF1")
+elif [[ "$CHAIN_ID" == "mainnet" ]]; then
+  VALS=(
+    "0x631A728482047b34eee75286463d64aa99B11D11"
+    "0x605bDc26fF6e23890d2b7241474a654A5d08269e"
+    "0x329C77B8C64b353c62B286fc98269c616F58d683"
+    "0x558cB42B69cE6984859C9ad60642Fa22bAc1CB03"
+    "0xE4200dD69D4bc0B3BDcac8AD3fBd10a1347d8b3e"
+    "0xf583A223D2F6767eba4f0C9f3B234c810eEA37C6"
+    "0xf57A630F411Fb2E9113A4a1820643bbaEc737e4B")
 else
   for filename in ./keystore/*;
   do
@@ -101,7 +110,10 @@ do
     cp ../../scripts/stress/vm-genesis.json .
     VM_GENESIS="--vm-genesis /travis/vm-genesis.json"
   elif [[ "$CHAIN_ID" == "staging" ]]; then
-    cp ../../../../cybermiles-issues/staging-utils/genesis/vm-genesis.json .
+    curl https://raw.githubusercontent.com/CyberMiles/testnet/master/travis/init-staging/vm-genesis.json > ./vm-genesis.json
+    VM_GENESIS="--vm-genesis /travis/vm-genesis.json"
+  elif [[ "$CHAIN_ID" == "mainnet" ]]; then
+    curl https://raw.githubusercontent.com/CyberMiles/testnet/master/travis/init-staging/vm-genesis.json > ./vm-genesis.json
     VM_GENESIS="--vm-genesis /travis/vm-genesis.json"
   fi
   `$TRAVIS_NODE init --home /travis --env $CHAIN_ID $VM_GENESIS`
@@ -130,6 +142,9 @@ do
   if [[ "$CHAIN_ID" == "staging" ]]; then
     sed -i.bak "s/rpcapi = .*$/rpcapi = \"cmt,eth,net,web3\"/" ./config/config.toml
     # sed -i.bak "s/rpc = .*$/rpc = false/" ./config/config.toml
+  elif [[ "$CHAIN_ID" == "mainnet" ]]; then
+    sed -i.bak "s/rpcapi = .*$/rpcapi = \"cmt,eth,net,web3\"/" ./config/config.toml
+    sed -i.bak "s/rpc = .*$/rpc = false/" ./config/config.toml
   fi
 done
 
@@ -159,7 +174,7 @@ jq --arg CHAIN_DATE $CHAIN_DATE --arg CHAIN_ID $CHAIN_ID \
 
 # set validator's address
 START=1
-if [[ "$CHAIN_ID" == "staging" ]]; then
+if [[ "$CHAIN_ID" == "staging" || "$CHAIN_ID" == "mainnet" ]]; then
   START=0
 fi
 for ((i=$START;i<$VALIDATOR_COUNT;i++)) do
@@ -173,6 +188,12 @@ if [[ "$CHAIN_ID" == "staging" ]]; then
     jq --arg IDX $i --arg VALNAME "val-"$((i+1)) \
     '(.validators[$IDX | tonumber ]|.max_amount) |= 20000000 | (.validators[$IDX | tonumber ]|.shares) |= 2000000
     | (.validators[$IDX | tonumber ]|.name) |= $VALNAME | (.validators[$IDX | tonumber]|.comp_rate) |= "11/20"' \
+    node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
+  done
+elif [[ "$CHAIN_ID" == "mainnet" ]]; then
+  for ((i=0;i<$VALIDATOR_COUNT;i++)) do
+    jq --arg IDX $i --arg VALNAME "val-"$((i+1)) \
+    '(.validators[$IDX | tonumber ]|.name) |= $VALNAME' \
     node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
   done
 elif [[ "$CHAIN_ID" == "stress" ]]; then
@@ -193,6 +214,12 @@ elif [[ "$CHAIN_ID" == "staging" ]]; then
   | (.params.cal_stake_interval) |= 8640 | (.params.cal_vp_interval) |= 360
   | (.params.foundation_address) |= "0xace111260c7e9a2e612e04686f5ad800fc7ca769"' \
   node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
+# set max_vals=19, backup_vals=5, cal_stake_interval=8640, cal_vp_interval=360, foundation_address= for mainnet
+elif [[ "$CHAIN_ID" == "mainnet" ]]; then
+  jq '(.params.max_vals) |= 19 | (.params.backup_vals) |= 5
+  | (.params.cal_stake_interval) |= 8640 | (.params.cal_vp_interval) |= 360
+  | (.params.foundation_address) |= "0x8C88FED745bd859D5c78A3990C1d35bBBC3C2234"' \
+  node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
 # set max_vals=5, backup_vals=2, unstake_waiting_period=2, reward_interval=3, cal_stake_interval=60 for stress
 elif [[ "$CHAIN_ID" == "stress" ]]; then
   jq '(.params.max_vals) |= 5 | (.params.backup_vals) |= 2
@@ -203,11 +230,11 @@ fi
 # copy genesis.json from node1 to other nodes
 for ((i=2;i<=$INST_COUNT;i++)) do echo node$i/config/genesis.json; done | xargs -n 1 cp node1/config/genesis.json
 
-# copy keystore to node1 if not staging
-if [[ "$CHAIN_ID" != "staging" ]]; then
+# copy keystore to node1 if not staging or mainnet
+if [[ "$CHAIN_ID" != "staging" || "$CHAIN_ID" != "mainnet" ]]; then
   dir=$(dirname $PWD)/scripts
   cp $dir/keystore/*.* node1/keystore
-# no keystore on staging
+# no keystore on staging or mainnet
 else
   rm node*/keystore/*
 fi

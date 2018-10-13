@@ -127,7 +127,7 @@ do
   fi
   # moniker, log_level, vm verbosity
   sed -i.bak "s/moniker = .*$/moniker = \"node-$i\"/" ./config/config.toml
-  sed -i.bak "s/log_level = .*$/log_level = \"state:info,*:error\"/" ./config/config.toml
+  sed -i.bak "s/log_level = .*$/log_level = \"app:debug,state:info,*:error\"/" ./config/config.toml
   sed -i.bak "s/verbosity = .*$/verbosity = 3/" ./config/config.toml
   # vm rpc config
   if [[ "$CHAIN_ID" == "test" || "$CHAIN_ID" == "stress" || $i -eq 1 ]]; then
@@ -211,13 +211,13 @@ if [[ "$CHAIN_ID" == "testnet" ]]; then
 # set max_vals=19, backup_vals=5, cal_stake_interval=8640, cal_vp_interval=360, foundation_address= for staging
 elif [[ "$CHAIN_ID" == "staging" ]]; then
   jq '(.params.max_vals) |= 19 | (.params.backup_vals) |= 5
-  | (.params.cal_stake_interval) |= 8640 | (.params.cal_vp_interval) |= 360
+  | (.params.cal_stake_interval) |= 8640 | (.params.cal_vp_interval) |= 1
   | (.params.foundation_address) |= "0xace111260c7e9a2e612e04686f5ad800fc7ca769"' \
   node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
 # set max_vals=19, backup_vals=5, cal_stake_interval=8640, cal_vp_interval=360, foundation_address= for mainnet
 elif [[ "$CHAIN_ID" == "mainnet" ]]; then
   jq '(.params.max_vals) |= 19 | (.params.backup_vals) |= 5
-  | (.params.cal_stake_interval) |= 8640 | (.params.cal_vp_interval) |= 360
+  | (.params.cal_stake_interval) |= 8640 | (.params.cal_vp_interval) |= 1
   | (.params.foundation_address) |= "0x8C88FED745bd859D5c78A3990C1d35bBBC3C2234"' \
   node1/config/genesis.json > tmp && mv tmp node1/config/genesis.json
 # set max_vals=5, backup_vals=2, unstake_waiting_period=2, reward_interval=3, cal_stake_interval=60 for stress

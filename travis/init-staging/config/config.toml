@@ -22,7 +22,7 @@ db_backend = "leveldb"
 db_path = "data"
 
 # Output level for logging, including package level options
-log_level = "app:debug,state:info,*:error"
+log_level = "state:info,*:error"
 
 ##### additional base config options #####
 
@@ -87,7 +87,7 @@ laddr = "tcp://0.0.0.0:26656"
 external_address = ""
 
 # Comma separated list of seed nodes to connect to
-seeds = "be9a6790128496fe64bba9692a79cf5be0bf9772@34.228.185.28:26656,9d1cba8ec2362ef9cab4d72e2ceabbe6b677026a@34.209.55.219:26656"
+seeds = ""
 
 # Comma separated list of nodes to keep persistent connections to
 persistent_peers = "be9a6790128496fe64bba9692a79cf5be0bf9772@34.228.185.28:26656,9d1cba8ec2362ef9cab4d72e2ceabbe6b677026a@34.209.55.219:26656"

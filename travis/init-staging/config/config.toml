@@ -22,7 +22,7 @@ db_backend = "leveldb"
 db_path = "data"
 
 # Output level for logging, including package level options
-log_level = "state:info,*:error"
+log_level = "app:debug,state:info,*:error"
 
 ##### additional base config options #####
 
@@ -87,11 +87,10 @@ laddr = "tcp://0.0.0.0:26656"
 external_address = ""
 
 # Comma separated list of seed nodes to connect to
-seeds = "a51b4bb00aba2c2d2068da7a5ac95d09ab42f2d5@34.228.185.28:26656,22967479639218742fc94948728bd540ec75ff9b@34.209.55.219:26656"
+seeds = "be9a6790128496fe64bba9692a79cf5be0bf9772@34.228.185.28:26656,9d1cba8ec2362ef9cab4d72e2ceabbe6b677026a@34.209.55.219:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-# Do not add private peers to this list if you don't want them advertised
-persistent_peers = "a51b4bb00aba2c2d2068da7a5ac95d09ab42f2d5@34.228.185.28:26656,22967479639218742fc94948728bd540ec75ff9b@34.209.55.219:26656"
+persistent_peers = "be9a6790128496fe64bba9692a79cf5be0bf9772@34.228.185.28:26656,9d1cba8ec2362ef9cab4d72e2ceabbe6b677026a@34.209.55.219:26656"
 
 # UPNP port forwarding
 upnp = false
@@ -112,10 +111,10 @@ max_num_peers = 50
 max_packet_msg_payload_size = 1024
 
 # Rate at which packets can be sent, in bytes/second
-send_rate = 512000
+send_rate = 5120000
 
 # Rate at which packets can be received, in bytes/second
-recv_rate = 512000
+recv_rate = 5120000
 
 # Set true to enable the peer-exchange reactor
 pex = true
@@ -200,6 +199,12 @@ prometheus = false
 
 # Address to listen for Prometheus collector(s) connections
 prometheus_listen_addr = ":26660"
+
+# Maximum number of simultaneous connections.
+# If you want to accept more significant number than the default, make sure
+# you increase your OS limits.
+# 0 - unlimited.
+max_open_connections = 3
 
 [vm]
 chainid = 20

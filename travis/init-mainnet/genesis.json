@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2018-10-11T06:15:13Z",
+  "genesis_time": "2018-10-15T08:00:00Z",
   "chain_id": "mainnet-0001",
   "validators": [
     {
@@ -16,7 +16,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -32,7 +32,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -48,7 +48,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -64,7 +64,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -80,7 +80,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -96,7 +96,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -112,7 +112,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -128,7 +128,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -144,7 +144,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -160,7 +160,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -176,7 +176,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -192,7 +192,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -208,7 +208,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -224,7 +224,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -240,7 +240,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -256,7 +256,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -272,7 +272,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -288,7 +288,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     },
     {
       "pub_key": {
@@ -304,7 +304,7 @@
       "website": "http://cybermiles.io/",
       "location": "HK",
       "email": "developer@cybermiles.io",
-      "Profile": ""
+      "Profile": "https://www.cybermiles.io/seed-validator/"
     }
   ],
   "app_hash": null,

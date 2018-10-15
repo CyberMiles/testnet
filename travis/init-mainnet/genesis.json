@@ -1,6 +1,6 @@
 {
-  "genesis_time": "2018-10-15T08:00:00Z",
-  "chain_id": "mainnet-0001",
+  "genesis_time": "2018-10-15T00:00:00Z",
+  "chain_id": "CyberMiles",
   "validators": [
     {
       "pub_key": {

@@ -1,11 +1,11 @@
 {
-  "genesis_time": "2018-10-11T14:56:17Z",
-  "chain_id": "testnet-1011",
+  "genesis_time": "2018-10-19T08:03:12Z",
+  "chain_id": "testnet-101908",
   "validators": [
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "H3Lt1MgnypS7AxjHIPhUm6ULmY8ZYkmOOzAC2BYKGRg="
+        "value": "GTTYPnycTFo2QCOvs/Lb//PL6f1WOkxiTPTRPLmj6kE="
       },
       "power": "1",
       "shares": 1000000,
@@ -21,7 +21,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "nPojdfSyBzzF9ZXucS3lknbP7CDIcwoZUYqPRqfmnoU="
+        "value": "u6A3D8i876ImxYDMvxWtG20Ar9PkFSaoRPLNSO9oKsk="
       },
       "power": "1",
       "shares": 1000000,
@@ -37,7 +37,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "t5AbfYr4Ewy6vnjHzVZU3Y+aPUEQWL4w+21c1WQz7bs="
+        "value": "ULM6FCazRkdKzVGKj3ByYd/wEjGCGTxiTWPqULMjQ/8="
       },
       "power": "1",
       "shares": 1000000,
@@ -53,7 +53,7 @@
     {
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
-        "value": "/ZtWfmxoAm41dXgvA7u71Cgvjkj0jyn4YLZqGno9X0g="
+        "value": "3y+Vl6ehf6o9senBjPg+9bvcNr2PEEMKNcL1bCRI2dY="
       },
       "power": "1",
       "shares": 1000000,

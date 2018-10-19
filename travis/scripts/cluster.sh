@@ -127,7 +127,7 @@ do
   fi
   # moniker, log_level, vm verbosity
   sed -i.bak "s/moniker = .*$/moniker = \"node-$i\"/" ./config/config.toml
-  sed -i.bak "s/log_level = .*$/log_level = \"app:debug,state:info,*:error\"/" ./config/config.toml
+  sed -i.bak "s/log_level = .*$/log_level = \"state:info,*:error\"/" ./config/config.toml
   sed -i.bak "s/verbosity = .*$/verbosity = 3/" ./config/config.toml
   # vm rpc config
   if [[ "$CHAIN_ID" == "test" || "$CHAIN_ID" == "stress" || $i -eq 1 ]]; then

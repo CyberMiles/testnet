@@ -106,7 +106,7 @@ addr_book_strict = true
 flush_throttle_timeout = 100
 
 # Maximum number of peers to connect to
-max_num_peers = 50
+max_num_peers = 100
 
 # Maximum size of a message packet payload, in bytes
 max_packet_msg_payload_size = 1024

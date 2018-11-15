@@ -1,0 +1,151 @@
+version: "2"
+services:
+  validators:
+    image: tianon/true
+    restart: "no"
+    depends_on:
+      - node-1
+      - node-2
+      - node-3
+      - node-4
+  normal:
+    image: tianon/true
+    restart: "no"
+    depends_on:
+      - node-5
+      - node-6
+  all:
+    image: tianon/true
+    restart: "no"
+    depends_on:
+      - validators
+      - normal
+  stress:
+    image: tianon/true
+    restart: "no"
+    depends_on:
+      - validators
+      - normal
+      - node-7
+      - node-8
+      - node-9
+      - node-10
+
+  node-1:
+    image: blockservice/echoin:latest
+    container_name: node-1
+    volumes:
+      - ~/volumes/testnet/echoin/nodes/node1:/echoin
+    command: ["node", "start", "--home", "/echoin"]
+    ports:
+      - 8545:8545
+      - 26656:26656
+      - 26657:26657
+  node-2:
+    image: blockservice/echoin:latest
+    container_name: node-2
+    volumes:
+      - ~/volumes/testnet/echoin/nodes/node2:/echoin
+    command: ["node", "start", "--home", "/echoin"]
+    ports:
+      - 8555:8545
+      - 26666:26656
+      - 26667:26657
+    depends_on:
+      - node-1
+  node-3:
+    image: blockservice/echoin:latest
+    container_name: node-3
+    volumes:
+      - ~/volumes/testnet/echoin/nodes/node3:/echoin
+    command: ["node", "start", "--home", "/echoin"]
+    ports:
+      - 8565:8545
+      - 26676:26656
+      - 26677:26657
+    depends_on:
+      - node-1
+  node-4:
+    image: blockservice/echoin:latest
+    container_name: node-4
+    volumes:
+      - ~/volumes/testnet/echoin/nodes/node4:/echoin
+    command: ["node", "start", "--home", "/echoin"]
+    ports:
+      - 8575:8545
+      - 26686:26656
+      - 26687:26657
+    depends_on:
+      - node-1
+  node-5:
+    image: blockservice/echoin:latest
+    container_name: node-5
+    volumes:
+      - ~/volumes/testnet/echoin/nodes/node5:/echoin
+    command: ["node", "start", "--home", "/echoin"]
+    ports:
+      - 8585:8545
+      - 26696:26656
+      - 26697:26657
+    depends_on:
+      - node-1
+  node-6:
+    image: blockservice/echoin:latest
+    container_name: node-6
+    volumes:
+      - ~/volumes/testnet/echoin/nodes/node6:/echoin
+    command: ["node", "start", "--home", "/echoin"]
+    ports:
+      - 8595:8545
+      - 26606:26656
+      - 26607:26657
+    depends_on:
+      - node-1
+  node-7:
+    image: blockservice/echoin:latest
+    container_name: node-7
+    volumes:
+      - ~/volumes/testnet/echoin/nodes/node7:/echoin
+    command: ["node", "start", "--home", "/echoin"]
+    ports:
+      - 8505:8545
+      - 26616:26656
+      - 26617:26657
+    depends_on:
+      - node-1
+  node-8:
+    image: blockservice/echoin:latest
+    container_name: node-8
+    volumes:
+      - ~/volumes/testnet/echoin/nodes/node8:/echoin
+    command: ["node", "start", "--home", "/echoin"]
+    ports:
+      - 8515:8545
+      - 26626:26656
+      - 26627:26657
+    depends_on:
+      - node-1
+  node-9:
+    image: blockservice/echoin:latest
+    container_name: node-9
+    volumes:
+      - ~/volumes/testnet/echoin/nodes/node9:/echoin
+    command: ["node", "start", "--home", "/echoin"]
+    ports:
+      - 8525:8545
+      - 26636:26656
+      - 26637:26657
+    depends_on:
+      - node-1
+  node-10:
+    image: blockservice/echoin:latest
+    container_name: node-10
+    volumes:
+      - ~/volumes/testnet/echoin/nodes/node10:/echoin
+    command: ["node", "start", "--home", "/echoin"]
+    ports:
+      - 8535:8545
+      - 26646:26656
+      - 26647:26657
+    depends_on:
+      - node-1

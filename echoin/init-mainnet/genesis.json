@@ -1,0 +1,343 @@
+{
+  "genesis_time": "2018-10-15T00:00:00Z",
+  "chain_id": "EchoIn",
+  "validators": [
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "NG/catDcO9W4CA8ayS0H7lilpj3QI4+j49smZyHb0Bw="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-01",
+      "address": "0x40aA5f4e4f2d3F00cC133Fbe57AC63974EA430d1",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "XD+JUdy9wIQ0hiVdYthB1Hm6RhoySbdScoz493rEdh8="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-02",
+      "address": "0x0bb3437290a3a783b3B003b6b36d2CC6A1255310",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "His7gz0blHXKLWnMOrXD0A4Zn1dfM76jcMedZIvwfYY="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-03",
+      "address": "0x0df1b757A77DBeF87daAaab7609710F4b0c98679",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "JIMFe6shsFualUKlba46knDH+hvZ9Qd1l9QlnWvocBY="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-04",
+      "address": "0x24C5FA42099c7c1c003EdA0a79cFcc816C8dE7DD",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "s8fnzb1zdE73rwaL4CdFN3pGHfwviGjPt3XHtGFeAsA="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-05",
+      "address": "0x061a75bD983F752AC1Eeb9F5EFF1D950224c2Aa9",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "wAjsJUJbx7wGlDAU2nT60MyV8yf2hyMUtwHU1Gxzlqw="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-06",
+      "address": "0xC9C7E4880411Ec7da5a999C0E9832DA91B6F9071",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "BQyRn5ZEkZCO//gMZNCll8fm5efO0/wR8G8KiPfY6+Q="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-07",
+      "address": "0x71ecF1F7f17cFc48aaF448b71a8900Ae6860236F",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "eXqr08h0VRsnQlEq3doC/rUqjB2d66now/RmCO8BU3M="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-08",
+      "address": "0xA080b4a340c68E8A99e677f4EF0051792136E30d",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "aIVtdAdQlQ4uuTMmsU+8z9d//+URrPKX2vcobWDO6HA="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-09",
+      "address": "0x5c158B32dE3037d5BC6D2Ebff1b9cF099daF1F7D",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "eqP7elXAYYlSf5RUPJJuiYgBQGH/s4j0EzMw0n6meQQ="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-10",
+      "address": "0xeD223e08DE95a8f87B698aA24374dF1D273e582A",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "la6T85/M9hh+0ZFFE5R3/lDq+j7NlN6n8QL2YFxlkEQ="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-11",
+      "address": "0xf4a595DbD7992cB5EA3CDA5779295accc4215888",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "OXc8HFbFILyQ6TO7Es/mz1mBhQNIZ/S9Nx9Fkh8j9Tk="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-12",
+      "address": "0x1B88eC94869E645B7465651B7D700dd32e3eC55b",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "d0bustuiwVw8x7U14HAAj+A4HGkcrdlkv8mMIDNCqE0="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-13",
+      "address": "0x05C76B2AaC06B384eBcA7867aC7245437d400f88",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "EpFwcxZrUZvoz/Ygs7GZkX09/6YG/XiZYAF+Wrr3il0="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-14",
+      "address": "0x8Eb88fEc8e867e1BEFdF7AaB3f889f69cCb66eeb",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "G2M3wUpv4zRE2LADRt8pcEPV8kGDjOzkcqwQpsJPavA="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-15",
+      "address": "0xEBC1B708e943d5A90053C1a7557D60b69cDe71CA",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "3srie5N/aA4PWYVJtgPdjRcodmUAMSSVzVj9bfrn7WA="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-16",
+      "address": "0x7e9d78fe2ff26e219cff32BA88aE7223bfb9B7A1",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "7HOjkUZrmka1ql8vdQLgMTvcBm3ALb1uTxPD6n6Vp3o="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-17",
+      "address": "0x733A32E1Ce94BA6d171cd1B026B7D4d2C1A40afF",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "uS2xxL2MLQZkcWEEZCrQGqYM5wZEMVgOxCjwsMV448M="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-18",
+      "address": "0xB588e6a0D2666515494D1f5ad30a97628f300807",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    },
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "ZMa9xeNjGEr7EA39MiumSwQnzEgFgWCOVUc314eoCxI="
+      },
+      "power": "1",
+      "shares": 1000,
+      "name": "seed-val-19",
+      "address": "0x4bDDB8edCD24074BD1A986f79b61CF5b03577602",
+      "comp_rate": "99/100",
+      "max_amount": 10000,
+      "website": "https://www.echoin.io/seed-validator/",
+      "location": "HK",
+      "email": "developer@echoin.io",
+      "profile": "Seed from the EchoIn Foundation. Will be replaced when a genesis validator is ready."
+    }
+  ],
+  "app_hash": null,
+  "params": {
+    "max_vals": 19,
+    "backup_vals": 5,
+    "self_staking_ratio": "1/10",
+    "inflation_rate": "2/25",
+    "validator_size_threshold": "3/25",
+    "unstake_waiting_period": 60480,
+    "proposal_expire_period": 60480,
+    "declare_candidacy_gas": 1000000,
+    "update_candidacy_gas": 1000000,
+    "set_comp_rate_gas": 21000,
+    "update_candidate_account_gas": 1000000,
+    "accept_candidate_account_update_request_gas": 1000000,
+    "transfer_fund_proposal_gas": 2000000,
+    "change_params_proposal_gas": 2000000,
+    "deploy_libeni_proposal_gas": 2000000,
+    "retire_program_proposal_gas": 2000000,
+    "upgrade_program_proposal_gas": 2000000,
+    "gas_price": 2000000000,
+    "min_staking_amount": 1000,
+    "validators_block_award_ratio": "9/10",
+    "max_slash_blocks": 12,
+    "slash_ratio": "1/1000",
+    "slash_enabled": false,
+    "cube_pub_keys": "[{\"cube_batch\":\"02\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ8FL6/9zul+X7bFSRiWAzFiAE\\n9vHYbClEHwlC7zUZ/JWzU7UT5S2qnYsseYF2WFjJtrGwHRAlTUyPtCpxV8f1uJsI\\nl+/N9l6torUHwkhhib1catUSd/T72ltjvVyyg5LQjtRsskFnv3wM/yxYotrgnOs+\\ndRpU6WI5XPCIyZqsGwIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"05\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCZ7Fw+1ddvy5OPFftbea0MxewW\\nKUTb/E7B4/MHvLz2h7f7snyveFwxxj7QwxaCoVxobEq6AigIlUFUXLM8Y598/jts\\nTaN+jh4xdoQN7qKwrbz1MWGf58Aa78Vnoj54B7V0LSajVbLJSZNUEI/24HLcG2iN\\nTD3dSvH0ARvRJJ9hZQIDAQAB\\n-----END PUBLIC KEY-----\"},{\"cube_batch\":\"06\",\"pub_key\":\"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCbNyWzuQ8Vrgrf9no9woaqgifc\\njxfpvpuREoGNBOzOMl9BpyTa45t2ZeigE+xLaTZJc7dVTMQus8ik1b2qQcmrdViR\\nbFx2P7tPg5z0DlDVXjq2G8Q3mP0WBEhGzyfycUmaT+yXoLu/UzGfFhr5nVztkUVD\\noOHnTtsKCKQekuY3YwIDAQAB\\n-----END PUBLIC KEY-----\"}]",
+    "low_price_tx_gas_limit": 500000,
+    "low_price_tx_slots_cap": 100,
+    "foundation_address": "0x8C88FED745bd859D5c78A3990C1d35bBBC3C2234",
+    "cal_stake_interval": 8640,
+    "cal_vp_interval": 1,
+    "cal_avg_staking_date_interval": 8640
+  }
+}

@@ -1,4 +1,4 @@
 node_modules
-travis/nodes
+echoin/nodes
 **/*.swp
-travis/faucet/data
+echoin/faucet/data

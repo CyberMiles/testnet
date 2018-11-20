@@ -4,7 +4,9 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const Geetest = require('gt3-sdk')
 const geoip   = require('geoip-lite')
-const validators = require('./validators')
+//const validators = require('./validators')
+const KeyEthereum = require('keythereum')
+const Tx = require("ethereumjs-tx")
 
 const DefaultAddrs = [
   '18.223.152.127',
@@ -21,8 +23,10 @@ let geetest = new Geetest({
   geetest_key: process.env['TRAVIS_FAUCET_GEETEST_KEY']
 })
 
+const ChainId = process.env['TRAVIS_FAUCET_CHAIN_ID']
 const BaseAddr = '0x7eff122b94897ea5b0e2a9abf47b86337fafebdc'
 const BasePwd = process.env['TRAVIS_FAUCET_COINBASE_PWD']
+const TestTokenContractAddr = process.env['TRAVIS_FAUCET_TEST_TOKEN_CONTRACT_ADDR']
 
 const TESTabi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"INITIAL_SUPPLY","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"unpause","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"paused","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_subtractedValue","type":"uint256"}],"name":"decreaseApproval","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"pause","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_addedValue","type":"uint256"}],"name":"increaseApproval","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[],"name":"Pause","type":"event"},{"anonymous":false,"inputs":[],"name":"Unpause","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousOwner","type":"address"},{"indexed":true,"name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"owner","type":"address"},{"indexed":true,"name":"spender","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Transfer","type":"event"}]
 
@@ -37,7 +41,7 @@ if (typeof web3 !== 'undefined') {
 } else {
   web3 = new Web3(new Web3.providers.HttpProvider('http://' + process.env['TRAVIS_FAUCET_RPC_HOST'] + ':' + process.env['TRAVIS_FAUCET_RPC_PORT']));
 }
-var testTokenInstance = web3.eth.contract(TESTabi).at('0xb6b29ef90120bec597939e0eda6b8a9164f75deb')
+var testTokenInstance = web3.eth.contract(TESTabi).at(TestTokenContractAddr)
 
 function langSwitch(req, res, next) {
   var aclan = req.headers['accept-language']
@@ -167,32 +171,47 @@ app.post('/cn/send', (req, res) => {
 })
 
 function sendCmt(to, res) {
-  web3.personal.unlockAccount(BaseAddr, BasePwd)
-  web3.eth.sendTransaction(
-    {
-      from: BaseAddr,
-      to: to,
-      value: 1e21
-    },
-    function(err, cmtHash) {
+  let nonce = web3.eth.getTransactionCount(BaseAddr)
+  let s = signTx(nonce, to, 1e21, '')
+  web3.eth.sendRawTransaction(s, function(err, cmtHash) {
+    if (err) {
+      console.error(err)
+      res.json({"error": err})
+      return
+    }
+    // sendTEST
+    let d = testTokenInstance.transfer.getData(to, 1e21, {from: BaseAddr})
+    let s = signTx(nonce + 1, TestTokenContractAddr, 0, d)
+    web3.eth.sendRawTransaction(s, function(err, testHash) {
       if (err) {
-        web3.personal.lockAccount(BaseAddr)
         console.error(err)
         res.json({"error": err})
         return
       }
-
-      // sendTEST
-      testTokenInstance.transfer.sendTransaction(to, 1e21, {from: BaseAddr}, function(err, testHash) {
-        web3.personal.lockAccount(BaseAddr)
-        res.json({"cmtHash": cmtHash, "testHash": testHash})
-      })
-    }
-  )
+      res.json({"cmtHash": cmtHash, "testHash": testHash})
+    })
+  })
 }
 
 app.get('/validators', (req, res) => {
-  res.json(validators())
+  // res.json(validators())
 })
+
+function signTx(nonce, addr, value, data) {
+	let keyObject = KeyEthereum.importFromFile(BaseAddr, '.');
+	let privateKey = KeyEthereum.recover(BasePwd, keyObject);
+	var rawTx = {
+	  nonce: nonce,
+	  gasPrice: '0x0',
+	  gasLimit: '0x' + Number(470000).toString(16),
+	  to: addr,
+	  value: value,
+	  data: data,
+      chainId: Number(ChainId),
+	}
+	let tx = new Tx(rawTx)
+	tx.sign(privateKey)
+	return '0x' + tx.serialize().toString('hex')
+}
 
 app.listen(3000, () => console.log('App listening on port 3000!'))

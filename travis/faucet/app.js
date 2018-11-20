@@ -202,7 +202,7 @@ function signTx(nonce, addr, value, data) {
 	let privateKey = KeyEthereum.recover(BasePwd, keyObject);
 	var rawTx = {
 	  nonce: nonce,
-	  gasPrice: '0x0',
+	  gasPrice: '0x' + Number(2e9).toString(16),
 	  gasLimit: '0x' + Number(4700000).toString(16),
 	  to: addr,
 	  value: value,

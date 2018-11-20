@@ -203,7 +203,7 @@ function signTx(nonce, addr, value, data) {
 	var rawTx = {
 	  nonce: nonce,
 	  gasPrice: '0x0',
-	  gasLimit: '0x' + Number(470000).toString(16),
+	  gasLimit: '0x' + Number(4700000).toString(16),
 	  to: addr,
 	  value: value,
 	  data: data,

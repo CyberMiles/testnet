@@ -87,10 +87,10 @@ laddr = "tcp://0.0.0.0:26656"
 external_address = ""
 
 # Comma separated list of seed nodes to connect to
-seeds = "a2316e5d291bb3ed73a3fcd51d43b1917bff0f0e@18.220.30.167:26656,681b4e4a37cba0aa2e1adf106599a39f74fb830d@18.191.158.191:26656"
+seeds = "ead8ea6322645558273c5e6ee13b3c24f7268368@35.237.95.127:26656,467f88cf6663abca4d7c07818155774007efedbc@35.196.227.218:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "a2316e5d291bb3ed73a3fcd51d43b1917bff0f0e@18.220.30.167:26656,681b4e4a37cba0aa2e1adf106599a39f74fb830d@18.191.158.191:26656"
+persistent_peers = "ead8ea6322645558273c5e6ee13b3c24f7268368@35.237.95.127:26656,467f88cf6663abca4d7c07818155774007efedbc@35.196.227.218:26656"
 
 # UPNP port forwarding
 upnp = false
@@ -209,7 +209,7 @@ max_open_connections = 3
 [vm]
 chainid = 19
 rpc = true
-rpcapi = "cmt,eth,net,web3,personal"
+rpcapi = "cmt,eth,net,web3"
 rpcaddr = "0.0.0.0"
 rpcport = 8545
 rpccorsdomain = ""

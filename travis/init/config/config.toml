@@ -90,7 +90,7 @@ external_address = ""
 seeds = "ead8ea6322645558273c5e6ee13b3c24f7268368@35.237.95.127:26656,467f88cf6663abca4d7c07818155774007efedbc@35.196.227.218:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "ead8ea6322645558273c5e6ee13b3c24f7268368@35.237.95.127:26656,467f88cf6663abca4d7c07818155774007efedbc@35.196.227.218:26656"
+persistent_peers = ""
 
 # UPNP port forwarding
 upnp = false
@@ -111,10 +111,10 @@ max_num_peers = 50
 max_packet_msg_payload_size = 1024
 
 # Rate at which packets can be sent, in bytes/second
-send_rate = 5120000
+send_rate = 10240000
 
 # Rate at which packets can be received, in bytes/second
-recv_rate = 5120000
+recv_rate = 10240000
 
 # Set true to enable the peer-exchange reactor
 pex = true

@@ -19,7 +19,7 @@
   <body>
   <nav>
     <a href="https://www.cybermiles.io">
-      <img class="logo" src="https://www.cybermiles.io/static/91d939dee4ec371960d8046a9009d6c4/06142/cybermilesLogo.png" alt="CyberMiles logo" />
+      <img class="logo" src="/images/cybermilesLogo.png" alt="CyberMiles logo" />
     </a>
     <div class="links">
       <a href="/index.html">English</a>
@@ -73,7 +73,7 @@ if (typeof jQuery == 'undefined') {
 }
 $(document).ready(function(){
   $.ajax({
-    url: "http://travis-node.cybermiles.io:26657/status",
+    url: "https://testnet-rpc.cybermiles.io:26658/status",
     dataType: 'json',
     error: function(){
       $('#status-box').css('background', 'rgba(216, 0, 0, 0.1)');

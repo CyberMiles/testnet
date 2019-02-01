@@ -39,7 +39,7 @@ app.use(bodyParser.json());
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider);
 } else {
-  web3 = new Web3(new Web3.providers.HttpProvider('http://' + process.env['TRAVIS_FAUCET_RPC_HOST'] + ':' + process.env['TRAVIS_FAUCET_RPC_PORT']));
+  web3 = new Web3(new Web3.providers.HttpProvider(process.env['TRAVIS_FAUCET_RPC_URL']));
 }
 var testTokenInstance = web3.eth.contract(TESTabi).at(TestTokenContractAddr)
 

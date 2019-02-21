@@ -136,7 +136,7 @@ button[disabled] {
 }
 
 html:lang(en) .container {
-  margin: 0 auto 0;
+  /* margin: 0 auto 0; */
 }
 
 .footer {

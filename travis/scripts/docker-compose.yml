@@ -33,6 +33,7 @@ services:
 
   node-1:
     image: cybermiles/travis:latest
+    privileged: true
     container_name: node-1
     volumes:
       - ~/volumes/testnet/travis/nodes/node1:/travis
@@ -43,6 +44,7 @@ services:
       - 26657:26657
   node-2:
     image: cybermiles/travis:latest
+    privileged: true
     container_name: node-2
     volumes:
       - ~/volumes/testnet/travis/nodes/node2:/travis
@@ -55,6 +57,7 @@ services:
       - node-1
   node-3:
     image: cybermiles/travis:latest
+    privileged: true
     container_name: node-3
     volumes:
       - ~/volumes/testnet/travis/nodes/node3:/travis
@@ -67,6 +70,7 @@ services:
       - node-1
   node-4:
     image: cybermiles/travis:latest
+    privileged: true
     container_name: node-4
     volumes:
       - ~/volumes/testnet/travis/nodes/node4:/travis
@@ -79,6 +83,7 @@ services:
       - node-1
   node-5:
     image: cybermiles/travis:latest
+    privileged: true
     container_name: node-5
     volumes:
       - ~/volumes/testnet/travis/nodes/node5:/travis
@@ -91,6 +96,7 @@ services:
       - node-1
   node-6:
     image: cybermiles/travis:latest
+    privileged: true
     container_name: node-6
     volumes:
       - ~/volumes/testnet/travis/nodes/node6:/travis
@@ -103,6 +109,7 @@ services:
       - node-1
   node-7:
     image: cybermiles/travis:latest
+    privileged: true
     container_name: node-7
     volumes:
       - ~/volumes/testnet/travis/nodes/node7:/travis
@@ -115,6 +122,7 @@ services:
       - node-1
   node-8:
     image: cybermiles/travis:latest
+    privileged: true
     container_name: node-8
     volumes:
       - ~/volumes/testnet/travis/nodes/node8:/travis
@@ -127,6 +135,7 @@ services:
       - node-1
   node-9:
     image: cybermiles/travis:latest
+    privileged: true
     container_name: node-9
     volumes:
       - ~/volumes/testnet/travis/nodes/node9:/travis
@@ -139,6 +148,7 @@ services:
       - node-1
   node-10:
     image: cybermiles/travis:latest
+    privileged: true
     container_name: node-10
     volumes:
       - ~/volumes/testnet/travis/nodes/node10:/travis

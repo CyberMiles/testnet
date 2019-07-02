@@ -32,7 +32,7 @@
     </div>
 
     <h2>Get started</h2>
-    <p>To get Travis TestNet CMT (the native token) and TEST (a test contract token based on CMT) tokens, you will need to first create accounts on the blockchain. There are two ways to do this. You can start your own Travis node, or apply access to one of our nodes.</p>
+    <p>To get Travis TestNet CMT (the native token), you will need to first create accounts on the blockchain. There are two ways to do this. You can start your own Travis node, or apply access to one of our nodes.</p>
 
     <ul>
       <li><a href="https://travis.readthedocs.io/en/latest/connect-testnet.html">Start your own Travis node</a> (recommended)</li>
@@ -49,7 +49,7 @@
       </div>
       <div class="g-recaptcha" data-sitekey="6Le6wFIUAAAAAPMm9nXPFR9h6gL8HRD21GpQaJxT"></div>
       <div class="control-group" style="margin-top:10px;">
-        <button type="button">Send me 1000 CMT and 1000 TEST </button>
+        <button type="button">Send me 1000 CMT</button>
       </div>
     </form>
 
@@ -149,7 +149,7 @@ $('form button').click(function() {
         }
         $('<p class="help-block error"></p>').insertAfter('#to').text(failed)
       } else if (data.cmtHash) {
-        $('<p class="help-block success"></p>').insertAfter('#to').html('Success with transaction hash<br/>CMT - ' + data.cmtHash + '<br/>TEST - ' + data.testHash)
+        $('<p class="help-block success"></p>').insertAfter('#to').html('Success with transaction hash<br/>CMT - ' + data.cmtHash)
       }
     },
     complete: () => {

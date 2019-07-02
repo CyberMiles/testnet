@@ -24,7 +24,7 @@ let geetest = new Geetest({
 })
 
 const ChainId = process.env['TRAVIS_FAUCET_CHAIN_ID']
-const BaseAddr = '0x7eff122b94897ea5b0e2a9abf47b86337fafebdc'
+const BaseAddr = '0x77beb894fc9b0ed41231e51f128a347043960a9d'
 const BasePwd = process.env['TRAVIS_FAUCET_COINBASE_PWD']
 const TestTokenContractAddr = process.env['TRAVIS_FAUCET_TEST_TOKEN_CONTRACT_ADDR']
 
@@ -180,6 +180,7 @@ function sendCmt(to, res) {
       return
     }
     // sendTEST
+    /*
     let d = testTokenInstance.transfer.getData(to, 1e21, {from: BaseAddr})
     let s = signTx(nonce + 1, TestTokenContractAddr, 0, d)
     web3.eth.sendRawTransaction(s, function(err, testHash) {
@@ -190,6 +191,8 @@ function sendCmt(to, res) {
       }
       res.json({"cmtHash": cmtHash, "testHash": testHash})
     })
+    */
+    res.json({"cmtHash": cmtHash})
   })
 }
 
